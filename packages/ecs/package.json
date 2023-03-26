@@ -1,0 +1,25 @@
+{
+  "name": "@plasmastrapi/ecs",
+  "version": "1.0.3",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.185",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "@plasmastrapi/base": "^1.0.18",
+    "lodash": "^4.17.21"
+  }
+}

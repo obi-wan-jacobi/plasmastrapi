@@ -1,31 +1,25 @@
 {
-    "compilerOptions": {
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "outDir": "./build",
-        "rootDir": "./src",
-        "allowJs": false,
-        "target": "esnext",
-        "module": "esnext",
-        "sourceMap": true,
-        "baseUrl": "src",
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "moduleResolution": "node",
-        "noUnusedLocals": false,
-        "types": [
-            "jquery",
-            "node",
-            "uuid",
-        ],
-        "paths": {
-            "engine/*": [ "engine/*" ],
-            "foundation/*": [ "foundation/*" ],
-        }
-    },
-    "include": [
-        "src/**/*.ts",
-    ],
-    "exclude": [
-    ]
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": false,
+    "target": "ESNext",
+    "module": "CommonJS",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "types": ["node", "jest"],
+    "paths": {
+      "@my-folder/*": ["my-folder/*"]
+    }
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

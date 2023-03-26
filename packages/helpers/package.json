@@ -1,0 +1,34 @@
+{
+  "name": "@plasmastrapi/helpers",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "@types/uuid": "^8.3.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@plasmastrapi/base": "^1.0.18",
+    "@plasmastrapi/ecs": "^1.0.2",
+    "@plasmastrapi/geometry": "^1.0.2",
+    "@plasmastrapi/presentation": "^1.0.2",
+    "@turf/boolean-contains": "^6.5.0",
+    "@turf/boolean-overlap": "^6.5.0",
+    "@turf/boolean-point-in-polygon": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
+    "@turf/line-intersect": "^6.5.0",
+    "@types/lodash": "^4.14.171"
+  }
+}

@@ -1,27 +1,25 @@
-
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "ignorePatterns": ["*.config.js"],
   "rules": {
     "arrow-parens": "error",
     "comma-dangle": ["error", "always-multiline"],
     "comma-style": ["error", "last"],
-    "key-spacing": ["error", {
+    "key-spacing": [
+      "error",
+      {
         "singleLine": {
-          "beforeColon" : false,
-          "afterColon"  : true
+          "beforeColon": false,
+          "afterColon": true
+        }
       }
-    }],
+    ],
     "no-duplicate-imports": ["error", { "includeExports": true }],
     "no-empty-interface": "off",
     "no-empty-pattern": "off",
@@ -29,31 +27,38 @@
     "no-trailing-spaces": "error",
     "semi": ["off"],
     "space-before-blocks": "error",
-    "space-before-function-paren": ["error", {
-      "anonymous": "never",
-      "named": "never",
-      "asyncArrow": "always"
-      }],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
     "prefer-rest-params": "off",
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/member-delimiter-style": ["error", {
-      "multiline": {
-        "delimiter": "semi",
-        "requireLast": true
-      },
-      "singleline": {
-        "delimiter": "semi",
-        "requireLast": false
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
       }
-    }],
+    ],
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-pattern": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/naming-convention": ["error",
+    "@typescript-eslint/naming-convention": [
+      "error",
       {
         "selector": "enum",
         "format": ["UPPER_CASE"]
@@ -110,17 +115,18 @@
       }
     ],
     "@typescript-eslint/typedef": [
-        "error", {
-          "arrayDestructuring": false,
-          "arrowParameter": false,
-          "memberVariableDeclaration": false,
-          "objectDestructuring": false,
-          "parameter": false,
-          "propertyDeclaration": false,
-          "variableDeclaration": false,
-          "variableDeclarationIgnoreFunction": false
-        }
+      "error",
+      {
+        "arrayDestructuring": false,
+        "arrowParameter": false,
+        "memberVariableDeclaration": false,
+        "objectDestructuring": false,
+        "parameter": false,
+        "propertyDeclaration": false,
+        "variableDeclaration": false,
+        "variableDeclarationIgnoreFunction": false
+      }
     ],
     "quotes": ["error", "single"]
-    }
   }
+}

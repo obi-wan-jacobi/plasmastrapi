@@ -1,0 +1,16 @@
+{
+  "name": "@plasmastrapi/diagnostics",
+  "version": "1.0.10",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/**"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+  },
+  "author": "",
+  "license": "ISC"
+}
