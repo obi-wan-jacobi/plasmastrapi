@@ -11,14 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/rimraf ./dist && tsc"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^18.7.16",
-    "@types/uuid": "^8.3.4",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
-  },
+  "author": "obi-wan-jacobi",
+  "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.18",
     "@plasmastrapi/ecs": "^1.0.2",
@@ -30,5 +24,8 @@
     "@turf/helpers": "^6.5.0",
     "@turf/line-intersect": "^6.5.0",
     "@types/lodash": "^4.14.171"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4"
   }
 }

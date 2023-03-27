@@ -11,16 +11,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/rimraf ./dist && tsc"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
-  },
+  "author": "obi-wan-jacobi",
+  "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.18",
     "@plasmastrapi/ecs": "^1.0.2",
     "@plasmastrapi/geometry": "^1.0.2",
     "@plasmastrapi/presentation": "^1.0.2"
-  }
+  },
+  "devDependencies": {}
 }

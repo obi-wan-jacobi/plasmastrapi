@@ -1,5 +1,15 @@
 {
   "name": "plasmastrapi",
+  "workspaces": [
+    "packages/base",
+    "packages/diagnostics",
+    "packages/ecs",
+    "packages/engine",
+    "packages/geometry",
+    "packages/helpers",
+    "packages/physics",
+    "packages/presentation"
+  ],
   "version": "1.0.0",
   "description": "",
   "scripts": {

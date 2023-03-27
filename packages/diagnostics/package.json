@@ -11,6 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/rimraf ./dist && tsc"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "obi-wan-jacobi",
+  "license": "",
+  "dependencies": {},
+  "devDependencies": {}
 }

@@ -11,10 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/rimraf ./dist && tsc"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.4"
-  }
+  "author": "obi-wan-jacobi",
+  "license": "",
+  "dependencies": {},
+  "devDependencies": {}
 }
