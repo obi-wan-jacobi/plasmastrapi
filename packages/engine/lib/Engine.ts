@@ -1,25 +1,20 @@
 import IEngine from './interfaces/IEngine';
 import IViewport from './interfaces/IViewport';
-import IPipe from './interfaces/IPipe';
-import IPipeEvent from './interfaces/IPipeEvent';
-import { Dict } from '@plasmastrapi/base';
 import { COMPONENTS, ENTITIES, IComponentMaster, IEntityMaster, ISystem, ISystemMaster, Stor, SystemMaster } from '@plasmastrapi/ecs';
 import IRenderingSystem from './interfaces/IRenderingSystem';
 
-export default class Engine<TImageSource, TPipes extends Dict<IPipe<IPipeEvent>>> implements IEngine<TImageSource> {
+export default class Engine<TImageSource> implements IEngine<TImageSource> {
   public entities: IEntityMaster;
   public components: IComponentMaster;
   public systems: ISystemMaster;
-  public pipes: TPipes;
   public viewport: IViewport<TImageSource>;
 
   private __t: Date;
   private __delta: number;
 
-  constructor({ viewport, pipes, systems }: { viewport: IViewport<TImageSource>; pipes: TPipes; systems: Stor[] }) {
+  constructor({ viewport, systems }: { viewport: IViewport<TImageSource>; systems: Stor[] }) {
     this.entities = ENTITIES;
     this.components = COMPONENTS;
-    this.pipes = pipes;
     this.systems = new SystemMaster();
     this.viewport = viewport;
     this.__initSystems(systems);
@@ -39,7 +34,6 @@ export default class Engine<TImageSource, TPipes extends Dict<IPipe<IPipeEvent>>
 
   public once(): void {
     this.__doDelta();
-    this.__doPipes();
     this.__doUpkeep();
     this.__doSystems();
     this.__doRender();
@@ -49,10 +43,6 @@ export default class Engine<TImageSource, TPipes extends Dict<IPipe<IPipeEvent>>
     const now = new Date();
     this.__delta = now.getTime() - (this.__t || now).getTime();
     this.__t = now;
-  }
-
-  private __doPipes(): void {
-    Object.keys(this.pipes).forEach((key) => this.pipes[key].next());
   }
 
   private __doUpkeep(): void {

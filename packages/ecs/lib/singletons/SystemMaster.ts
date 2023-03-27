@@ -3,7 +3,7 @@ import { Stor } from '..';
 import ISystem from '../interfaces/ISystem';
 import ISystemMaster from '../interfaces/ISystemMaster';
 
-export default class SystemMaster implements ISystemMaster {
+class SystemMaster implements ISystemMaster {
   private __systems: IDictionary<ISystem> = new Dictionary();
 
   public add(SystemCtor: Stor): void {
@@ -21,3 +21,5 @@ export default class SystemMaster implements ISystemMaster {
     this.__systems.forEach(fn);
   }
 }
+
+export const SYSTEMS = new SystemMaster();

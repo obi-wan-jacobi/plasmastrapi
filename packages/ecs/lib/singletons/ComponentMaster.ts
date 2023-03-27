@@ -1,8 +1,8 @@
 import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import { ComponentClass } from '..';
-import { IOC } from '../abstracts/Entity';
 import IComponent from '../interfaces/IComponent';
 import IComponentMaster from '../interfaces/IComponentMaster';
+import { IOC } from './IOC';
 
 class ComponentMaster implements IComponentMaster {
   private __componentMap: IDictionary<IDictionary<IComponent<any>>> = new Dictionary();

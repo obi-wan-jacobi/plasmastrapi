@@ -1,8 +1,9 @@
-import Entity, { IOC } from '../abstracts/Entity';
+import Entity from '../abstracts/Entity';
 import { Dict, Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import IEntityMaster from '../interfaces/IEntityMaster';
 import IEntity from '../interfaces/IEntity';
 import { EntityClass } from '..';
+import { IOC } from './IOC';
 
 class EntityMaster implements IEntityMaster {
   private __entityMap: IDictionary<IDictionary<IEntity>> = new Dictionary();

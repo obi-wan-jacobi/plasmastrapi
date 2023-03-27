@@ -3,17 +3,7 @@ import { Ctor } from '..';
 import hereditary from '../decorators/hereditary';
 import IComponent from '../interfaces/IComponent';
 import IEntity from '../interfaces/IEntity';
-
-export const IOC = {
-  entities: {
-    register: (entity: IEntity): IEntity => entity,
-    purge: ({}: IEntity): void => undefined,
-  },
-  components: {
-    register: (component: IComponent<any>): IComponent<any> => component,
-    purge: ({}: IComponent<any>): void => undefined,
-  },
-};
+import { IOC } from '../singletons/IOC';
 
 export default abstract class Entity extends Unique implements IEntity {
   private __components: IDictionary<IComponent<any>> = new Dictionary();
