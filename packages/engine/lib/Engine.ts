@@ -1,6 +1,6 @@
 import IEngine from './interfaces/IEngine';
 import IViewport from './interfaces/IViewport';
-import { COMPONENTS, ENTITIES, IComponentMaster, IEntityMaster, ISystem, ISystemMaster, Stor, SystemMaster } from '@plasmastrapi/ecs';
+import { COMPONENTS, ENTITIES, IComponentMaster, IEntityMaster, ISystem, ISystemMaster, Stor, SYSTEMS } from '@plasmastrapi/ecs';
 import IRenderingSystem from './interfaces/IRenderingSystem';
 
 export default class Engine<TImageSource> implements IEngine<TImageSource> {
@@ -15,7 +15,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
   constructor({ viewport, systems }: { viewport: IViewport<TImageSource>; systems: Stor[] }) {
     this.entities = ENTITIES;
     this.components = COMPONENTS;
-    this.systems = new SystemMaster();
+    this.systems = SYSTEMS;
     this.viewport = viewport;
     this.__initSystems(systems);
   }
