@@ -1,11 +1,11 @@
 // <autogen>
-import Dictionary from './data-structures/Dictionary';
-import IDictionary from './interfaces/IDictionary';
-import IDisposable from './interfaces/IDisposable';
-import IUnique from './interfaces/IUnique';
-import Unique from './abstracts/Unique';
-import clone from './helpers/clone';
-import isNullOrUndefined from './helpers/isNullOrUndefined';
+import Dictionary, {  } from './data-structures/Dictionary';
+import IDictionary, {  } from './interfaces/IDictionary';
+import IDisposable, {  } from './interfaces/IDisposable';
+import IUnique, {  } from './interfaces/IUnique';
+import Unique, {  } from './abstracts/Unique';
+import clone, {  } from './helpers/clone';
+import isNullOrUndefined, {  } from './helpers/isNullOrUndefined';
 export { Unique, Dictionary, clone, isNullOrUndefined, IDictionary, IDisposable, IUnique };
 // </autogen>
 export type ABC<T> = { name: string; prototype: T };

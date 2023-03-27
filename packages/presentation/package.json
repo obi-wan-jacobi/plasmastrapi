@@ -16,8 +16,7 @@
   "dependencies": {
     "@plasmastrapi/base": "^1.0.18",
     "@plasmastrapi/ecs": "^1.0.2",
-    "@plasmastrapi/geometry": "^1.0.2",
-    "@plasmastrapi/presentation": "^1.0.2"
+    "@plasmastrapi/geometry": "^1.0.2"
   },
   "devDependencies": {}
 }

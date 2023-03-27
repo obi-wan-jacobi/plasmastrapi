@@ -14,11 +14,11 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.18",
-    "@plasmastrapi/ecs": "^1.0.2",
-    "@plasmastrapi/geometry": "^1.0.2",
-    "@plasmastrapi/helpers": "^1.0.0",
-    "@plasmastrapi/presentation": "^1.0.2"
+    "@plasmastrapi/base": "^1.0.20",
+    "@plasmastrapi/ecs": "^1.0.4",
+    "@plasmastrapi/geometry": "^1.0.5",
+    "@plasmastrapi/helpers": "^1.0.2",
+    "@plasmastrapi/presentation": "^1.0.3"
   },
   "devDependencies": {}
 }

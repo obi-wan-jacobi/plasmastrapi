@@ -13,14 +13,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "tsc": "tsc",
     "lint": "eslint --fix",
     "prettier-format": "prettier --config ./.prettierrc .//**/*.{ts,js,jsx,json} --write",
-    "build": "rimraf ./bin && tsc --project tsconfig.build.json",
-    "test": "jest --passWithNoTests",
-    "preversion": "npm run lint && npm run prettier-format && npm run test",
-    "version": "npm run build && git add .",
-    "postversion": "git push && git push --tags"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,6 +30,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^3.9.10"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "obi-wan-jacobi",
+  "license": ""
 }

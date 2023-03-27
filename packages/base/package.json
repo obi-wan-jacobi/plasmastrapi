@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/base",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,6 +13,10 @@
   },
   "author": "obi-wan-jacobi",
   "license": "",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.1"
+  }
 }

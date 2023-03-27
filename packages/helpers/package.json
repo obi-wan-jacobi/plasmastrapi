@@ -14,10 +14,10 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.18",
-    "@plasmastrapi/ecs": "^1.0.2",
-    "@plasmastrapi/geometry": "^1.0.2",
-    "@plasmastrapi/presentation": "^1.0.2",
+    "@plasmastrapi/base": "^1.0.20",
+    "@plasmastrapi/ecs": "^1.0.4",
+    "@plasmastrapi/geometry": "^1.0.5",
+    "@plasmastrapi/presentation": "^1.0.3",
     "@turf/boolean-contains": "^6.5.0",
     "@turf/boolean-overlap": "^6.5.0",
     "@turf/boolean-point-in-polygon": "^6.5.0",
@@ -25,7 +25,5 @@
     "@turf/line-intersect": "^6.5.0",
     "@types/lodash": "^4.14.171"
   },
-  "devDependencies": {
-    "@types/uuid": "^8.3.4"
-  }
+  "devDependencies": {}
 }
