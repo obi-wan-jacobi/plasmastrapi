@@ -14,12 +14,6 @@ export default class Dictionary<T extends {}> implements IDictionary<T> {
   }
 
   public write({ key, value }: { key: string; value: T }): void {
-    if (isNullOrUndefined(key)) {
-      throw new Error('Key must be defined.');
-    }
-    if (isNullOrUndefined(value)) {
-      throw new Error('Value must be defined.');
-    }
     this.__data[key] = value;
   }
 

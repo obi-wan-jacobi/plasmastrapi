@@ -1,3 +1,3 @@
 // <autogen>
-export {  };
+export {};
 // </autogen>

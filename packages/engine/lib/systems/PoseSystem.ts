@@ -2,7 +2,7 @@ import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
 import { PoseComponent } from '@plasmastrapi/geometry';
 import { getAbsolutePose } from '@plasmastrapi/helpers';
 import RenderingSystem from '../abstracts/RenderingSystem';
-import { RGBA_0, RGBA_GREEN } from '../enums/COLOUR';
+import { RGBA_0, RGBA_GREEN } from '@plasmastrapi/presentation';
 import IViewport from '../interfaces/IViewport';
 
 export default class PoseSystem extends RenderingSystem {

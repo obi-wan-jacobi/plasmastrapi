@@ -55,6 +55,11 @@ export default class Engine<TImageSource, TPipes extends Dict<IPipe<IPipeEvent>>
     Object.keys(this.pipes).forEach((key) => this.pipes[key].next());
   }
 
+  private __doUpkeep(): void {
+    this.entities.upkeep();
+    this.components.upkeep();
+  }
+
   private __doSystems(): void {
     this.systems.forEach((system: ISystem) =>
       system.once({
@@ -64,11 +69,6 @@ export default class Engine<TImageSource, TPipes extends Dict<IPipe<IPipeEvent>>
         delta: this.__delta,
       }),
     );
-  }
-
-  private __doUpkeep(): void {
-    this.entities.upkeep();
-    this.components.upkeep();
   }
 
   private __doRender(): void {
