@@ -1,6 +1,6 @@
 import IUnique from '../interfaces/IUnique';
 
-const uuidv1 = require('uuid/v1');
+const { v1: uuidv1 } = require('uuid');
 
 export default abstract class Unique implements IUnique {
   public static generateUuid(): string {
