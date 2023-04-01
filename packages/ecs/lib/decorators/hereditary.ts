@@ -1,4 +1,3 @@
-import { Dict } from '@plasmastrapi/base';
 import IEntity from '../interfaces/IEntity';
 
 // propagate method call to all children
@@ -12,10 +11,10 @@ export default function hereditary({}: {}, {}: {}, descriptor: PropertyDescripto
       }
       fn.apply(this, arguments);
       this._children.forEach((child: IEntity) => {
-        if (!(child as Dict<any>)[fn.name]) {
+        if (!(child as any)[fn.name]) {
           return;
         }
-        return (child as Dict<any>)[fn.name](...arguments);
+        return (child as any)[fn.name](...arguments);
       });
     },
   }[fn.name];

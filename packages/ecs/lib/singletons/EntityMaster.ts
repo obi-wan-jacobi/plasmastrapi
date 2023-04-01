@@ -1,5 +1,5 @@
 import Entity from '../abstracts/Entity';
-import { Dict, Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
+import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import IEntityMaster from '../interfaces/IEntityMaster';
 import IEntity from '../interfaces/IEntity';
 import { EntityClass } from '..';
@@ -41,19 +41,11 @@ class EntityMaster implements IEntityMaster {
   }
 
   public first<T extends IEntity>(EntityCls: EntityClass<T>): Volatile<T> {
-    const result = this.__entityMap.read(EntityCls.name)?.toArray();
-    if (!result) {
-      return undefined;
-    }
-    return result[0] as T;
+    return this.__entityMap.read(EntityCls.name)?.first() as Volatile<T>;
   }
 
   public last<T extends IEntity>(EntityCls: EntityClass<T>): Volatile<T> {
-    const result = this.__entityMap.read(EntityCls.name)?.toArray();
-    if (!result) {
-      return undefined;
-    }
-    return result[result.length - 1] as T;
+    return this.__entityMap.read(EntityCls.name)?.last() as Volatile<T>;
   }
 
   public upkeep(): void {
@@ -121,7 +113,7 @@ class EntityMaster implements IEntityMaster {
     const id = instance.$id;
     while (instance) {
       this.__entityMap.read(instance.constructor.name)!.delete(id);
-      instance = (instance as Dict<any>).__proto__;
+      instance = (instance as any).__proto__;
     }
   }
 }

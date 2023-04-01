@@ -1,13 +1,14 @@
 import { Dict } from '@plasmastrapi/base';
 
 export default class HTML5ImageCache {
-  private __data: Dict<HTMLImageElement> = {};
+  private __data: Dict<HTMLImageElement> = new Map() as Dict<HTMLImageElement>;
 
   public load(src: string): CanvasImageSource {
-    if (!this.__data[src]) {
-      this.__data[src] = new Image();
-      this.__data[src].src = src;
+    if (!this.__data.get(src)) {
+      const image = new Image();
+      image.src = src;
+      this.__data.set(src, new Image());
     }
-    return this.__data[src];
+    return this.__data.get(src)!;
   }
 }
