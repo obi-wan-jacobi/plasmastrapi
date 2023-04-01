@@ -18,4 +18,8 @@ export default interface IDictionary<T extends {}> {
   every(fn: (value: T) => boolean): void;
 
   toArray(): T[];
+
+  first(): Volatile<T>;
+
+  last(): Volatile<T>;
 }
