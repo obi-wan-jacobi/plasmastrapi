@@ -19,6 +19,11 @@ class ComponentMaster implements IComponentMaster {
     };
   }
 
+  public count<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): number {
+    const collection = this.__componentMap.read(ComponentCls.name);
+    return collection ? collection.length : 0;
+  }
+
   public forEvery<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): Void<Void<T>> {
     const collection = this.__componentMap.read(ComponentCls.name);
     return collection ? collection.forEach.bind(collection) : () => undefined;

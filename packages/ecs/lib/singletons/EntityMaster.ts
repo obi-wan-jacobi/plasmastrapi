@@ -22,6 +22,11 @@ class EntityMaster implements IEntityMaster {
     };
   }
 
+  public count<T extends IEntity>(EntityCls: EntityClass<T>): number {
+    const collection = this.__entityMap.read(EntityCls.name);
+    return collection ? collection.length : 0;
+  }
+
   public forEvery<T extends IEntity>(EntityCls: EntityClass<T>): Void<Void<T>> {
     const collection = this.__entityMap.read(EntityCls.name);
     return collection ? collection.forEach.bind(collection) : (): void => undefined;
