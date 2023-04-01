@@ -9,7 +9,8 @@ import isNullOrUndefined from './helpers/isNullOrUndefined';
 export { Unique, Dictionary, clone, isNullOrUndefined, IDictionary, IDisposable, IUnique };
 // </autogen>
 export type ABC<T> = { name: string; prototype: T };
-export type Dict<T> = { [key: string]: T } & Map<string, T>;
+export type Index<T> = { [key: string]: T };
+export type Dict<T> = Index<T> & Map<string, T>;
 export type Volatile<T> = T | undefined;
 export type Fn<TArg, TResult> = ({}: TArg) => TResult;
 export type Void<T> = Fn<T, void>;

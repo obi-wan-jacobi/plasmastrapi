@@ -14,7 +14,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.23",
+    "@plasmastrapi/base": "^1.0.24",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
