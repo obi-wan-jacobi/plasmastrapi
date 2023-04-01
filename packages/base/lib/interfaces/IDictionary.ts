@@ -15,7 +15,7 @@ export default interface IDictionary<T extends {}> {
 
   forEach(fn: Void<T>): void;
 
-  every(fn: (value: T) => boolean): void;
+  every(fn: (value: T) => boolean): boolean;
 
   toArray(): T[];
 
