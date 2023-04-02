@@ -25,7 +25,8 @@ export default abstract class Component<T extends {}> extends Unique implements 
     this.__data = clone(data) as T;
   }
 
-  public patch(data: {}): void {
-    this.mutate(lodash.merge(this.copy(), data));
+  public patch(data: T | {}): void {
+    // https://stackoverflow.com/questions/66247060/how-to-merge-objects-with-lodash-but-replace-arrays-values
+    this.mutate(lodash.mergeWith(this.copy(), data, (a, b) => (lodash.isArray(b) ? b : undefined)));
   }
 }
