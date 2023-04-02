@@ -15,7 +15,7 @@
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.25",
-    "@plasmastrapi/ecs": "^1.0.9",
+    "@plasmastrapi/ecs": "^1.0.10",
     "@plasmastrapi/geometry": "^1.0.5",
     "@plasmastrapi/presentation": "^1.0.5",
     "@turf/boolean-contains": "^6.5.0",

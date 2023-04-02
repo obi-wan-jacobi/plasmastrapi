@@ -14,7 +14,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.9",
+    "@plasmastrapi/ecs": "^1.0.10",
     "@turf/bbox": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "@types/geojson": "^7946.0.10",

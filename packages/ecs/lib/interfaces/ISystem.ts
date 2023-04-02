@@ -3,5 +3,11 @@ import IEntityMaster from './IEntityMaster';
 import ISystemMaster from './ISystemMaster';
 
 export default interface ISystem {
-  once({}: { entities: IEntityMaster; components: IComponentMaster; systems: ISystemMaster; delta: number }): void;
+  once({}: {
+    entities: IEntityMaster;
+    components: IComponentMaster;
+    systems: ISystemMaster;
+    delta: number;
+    viewport: { width: number; height: number };
+  }): void;
 }

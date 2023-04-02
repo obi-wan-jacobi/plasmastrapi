@@ -57,6 +57,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
         components: this.components,
         systems: this.systems,
         delta: this.__delta,
+        viewport: { width: this.viewport.width, height: this.viewport.height },
       }),
     );
   }
