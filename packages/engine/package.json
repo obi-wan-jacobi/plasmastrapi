@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/engine",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
     "@plasmastrapi/ecs": "^1.0.8",
     "@plasmastrapi/geometry": "^1.0.5",
     "@plasmastrapi/helpers": "^1.0.2",
-    "@plasmastrapi/presentation": "^1.0.4"
+    "@plasmastrapi/presentation": "^1.0.5"
   },
   "devDependencies": {}
 }

@@ -1,7 +1,7 @@
 import { Dictionary, IDictionary, Void } from '@plasmastrapi/base';
 import { Entity, Ctor, IComponent } from '@plasmastrapi/ecs';
 import { PoseComponent } from '@plasmastrapi/geometry';
-import { RGBA_0, RGBA_WHITE, StyleComponent } from '@plasmastrapi/presentation';
+import { COLOUR, StyleComponent } from '@plasmastrapi/presentation';
 import { observable } from './decorators/observable';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
 import IHTML5CanvasElement from './interfaces/IHTML5CanvasElement';
@@ -12,11 +12,11 @@ export default class HTML5CanvasElement extends Entity implements IHTML5CanvasEl
 
   public constructor() {
     super();
-    this._observedMethods = new Dictionary<Dictionary<() => void>>();
+    this._observedMethods = new Dictionary<Dictionary<Void<void>>>();
     this.$add(PoseComponent, { x: 0, y: 0, a: 0 });
     this.$add(StyleComponent, {
-      colour: RGBA_WHITE,
-      fill: RGBA_0,
+      colour: COLOUR.RGBA_WHITE,
+      fill: COLOUR.RGBA_0,
       opacity: 1,
       zIndex: 0,
     });

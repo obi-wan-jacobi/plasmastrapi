@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/html5-canvas",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
     "@plasmastrapi/ecs": "^1.0.8",
     "@plasmastrapi/engine": "^1.0.7",
     "@plasmastrapi/geometry": "^1.0.5",
-    "@plasmastrapi/presentation": "^1.0.4"
+    "@plasmastrapi/presentation": "^1.0.5"
   },
   "devDependencies": {}
 }

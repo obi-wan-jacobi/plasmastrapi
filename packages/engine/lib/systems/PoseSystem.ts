@@ -2,7 +2,7 @@ import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
 import { PoseComponent } from '@plasmastrapi/geometry';
 import { getAbsolutePose } from '@plasmastrapi/helpers';
 import RenderingSystem from '../abstracts/RenderingSystem';
-import { RGBA_0, RGBA_GREEN } from '@plasmastrapi/presentation';
+import { COLOUR } from '@plasmastrapi/presentation';
 import IViewport from '../interfaces/IViewport';
 
 export default class PoseSystem extends RenderingSystem {
@@ -12,7 +12,7 @@ export default class PoseSystem extends RenderingSystem {
       viewport.drawCircle({
         position: { x, y },
         radius: 2,
-        style: { fill: RGBA_0, opacity: 1, zIndex: 9999, colour: RGBA_GREEN },
+        style: { fill: COLOUR.RGBA_0, opacity: 1, zIndex: 9999, colour: COLOUR.RGBA_GREEN },
       });
     });
   }
