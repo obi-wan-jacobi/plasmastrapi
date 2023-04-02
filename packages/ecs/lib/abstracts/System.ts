@@ -4,5 +4,11 @@ import ISystem from '../interfaces/ISystem';
 import ISystemMaster from '../interfaces/ISystemMaster';
 
 export default abstract class System implements ISystem {
-  public abstract once({}: { entities: IEntityMaster; components: IComponentMaster; systems: ISystemMaster; delta: number }): void;
+  public abstract once({}: {
+    entities: IEntityMaster;
+    components: IComponentMaster;
+    systems: ISystemMaster;
+    delta: number;
+    viewport: { width: number; height: number };
+  }): void;
 }

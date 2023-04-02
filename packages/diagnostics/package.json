@@ -1,11 +1,11 @@
 {
   "name": "@plasmastrapi/diagnostics",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "./dist/**"
+    "dist/**"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.8",
+    "@plasmastrapi/ecs": "^1.0.9",
     "@plasmastrapi/engine": "^1.0.10",
     "@plasmastrapi/geometry": "^1.0.5",
     "@plasmastrapi/presentation": "^1.0.5"
