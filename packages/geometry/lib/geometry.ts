@@ -1,8 +1,8 @@
 import { Feature, GeoJsonProperties, MultiPolygon, Polygon, LineString } from 'geojson';
 import * as turf from '@turf/helpers';
 import turfBBOX from '@turf/bbox';
-import { IPoint, IPose } from '../components/PoseComponent';
-import { IShape } from '../components/ShapeComponent';
+import { IPoint, IPose } from './components/PoseComponent';
+import { IShape } from './components/ShapeComponent';
 
 export const rotatePointAboutOrigin = ({ point, orientation }: { point: IPoint; orientation: number }): IPoint => {
   const s = Math.sin(orientation);
@@ -79,10 +79,6 @@ export const getEuclideanDistanceBetweenPoints = (p1: IPoint, p2: IPoint): numbe
 
 export const getAngleBetweenPoints = (p1: IPoint, p2: IPoint): number => {
   return Math.atan2(p2.y - p1.y, p2.x - p1.x);
-};
-
-export const pow2 = (target: number): number => {
-  return Math.pow(target, 2);
 };
 
 export const getDirectionVectorAB = (a: IPoint, b: IPoint): { x: number; y: number } => {

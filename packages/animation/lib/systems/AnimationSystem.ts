@@ -1,8 +1,7 @@
 import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
-import { AnimationComponent, IAnimation } from '@plasmastrapi/presentation';
-import RenderingSystem from '../abstracts/RenderingSystem';
-import IViewport from '../interfaces/IViewport';
-import { getAbsolutePose } from '@plasmastrapi/helpers';
+import { getAbsolutePose } from '@plasmastrapi/geometry';
+import AnimationComponent, { IAnimation } from '../components/AnimationComponent';
+import { IViewport, RenderingSystem } from '@plasmastrapi/engine';
 
 export default class AnimationSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {

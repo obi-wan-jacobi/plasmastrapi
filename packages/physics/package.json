@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/physics",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,11 +14,8 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.10",
-    "@plasmastrapi/geometry": "^1.0.5",
-    "@plasmastrapi/helpers": "^1.0.2",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
+    "@plasmastrapi/ecs": "^1.0.11",
+    "@plasmastrapi/geometry": "^1.0.7"
   },
   "devDependencies": {}
 }

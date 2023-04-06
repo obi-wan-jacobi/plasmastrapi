@@ -1,7 +1,6 @@
 import { Void } from '@plasmastrapi/base';
-import { IViewport } from '@plasmastrapi/engine';
+import { IImage, ILabel, IStyle, IViewport } from '@plasmastrapi/engine';
 import { IPoint, IPose } from '@plasmastrapi/geometry';
-import { IImage, ILabel, IStyle } from '@plasmastrapi/presentation';
 import HTML5ImageCache from './memory/HTML5ImageCache';
 
 function Atomic({}, {}, descriptor: PropertyDescriptor): void {

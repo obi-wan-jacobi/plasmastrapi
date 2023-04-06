@@ -1,5 +1,7 @@
 import { IPose, IPoint } from '@plasmastrapi/geometry';
-import { IImage, ILabel, IStyle } from '@plasmastrapi/presentation';
+import { IImage } from '../components/ImageComponent';
+import { IStyle } from '../components/StyleComponent';
+import { ILabel } from '../components/LabelComponent';
 
 export default interface IViewport<TImageSource> {
   width: number;

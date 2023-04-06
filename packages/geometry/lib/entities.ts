@@ -1,8 +1,10 @@
 import { IEntity } from '@plasmastrapi/ecs';
-import { fromPointsToGeoJSON, fromShapeToGeoJSON, IPoint, IPose, PoseComponent, ShapeComponent, transformShape } from '@plasmastrapi/geometry';
 import booleanContains from '@turf/boolean-contains';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import * as turf from '@turf/helpers';
+import { fromPointsToGeoJSON, fromShapeToGeoJSON, transformShape } from './geometry';
+import PoseComponent, { IPoint, IPose } from './components/PoseComponent';
+import ShapeComponent from './components/ShapeComponent';
 const booleanOverlaps = require('@turf/boolean-overlap').default;
 const lineIntersect = require('@turf/line-intersect').default;
 

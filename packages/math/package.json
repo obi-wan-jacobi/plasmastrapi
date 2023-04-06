@@ -1,6 +1,6 @@
 {
-  "name": "@plasmastrapi/diagnostics",
-  "version": "1.0.15",
+  "name": "@plasmastrapi/math",
+  "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,10 +13,6 @@
   },
   "author": "obi-wan-jacobi",
   "license": "",
-  "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.11",
-    "@plasmastrapi/engine": "^1.0.13",
-    "@plasmastrapi/geometry": "^1.0.7"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

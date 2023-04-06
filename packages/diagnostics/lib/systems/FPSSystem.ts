@@ -1,7 +1,6 @@
 import { IComponentMaster } from '@plasmastrapi/ecs';
-import { RenderingSystem, IViewport } from '@plasmastrapi/engine';
+import { RenderingSystem, IViewport, COLOUR } from '@plasmastrapi/engine';
 import { ShapeComponent } from '@plasmastrapi/geometry';
-import { COLOUR } from '@plasmastrapi/presentation';
 
 export default class FPSSystem extends RenderingSystem {
   private __printValue = '';

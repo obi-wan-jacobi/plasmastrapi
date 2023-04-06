@@ -1,8 +1,8 @@
 import { IComponentMaster } from '@plasmastrapi/ecs';
 import { LineComponent } from '@plasmastrapi/geometry';
-import { StyleComponent } from '@plasmastrapi/presentation';
 import RenderingSystem from '../abstracts/RenderingSystem';
 import IViewport from '../interfaces/IViewport';
+import StyleComponent from '../components/StyleComponent';
 
 export default class LineSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {

@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/geometry",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,9 +16,14 @@
   "dependencies": {
     "@plasmastrapi/ecs": "^1.0.10",
     "@turf/bbox": "^6.5.0",
+    "@turf/boolean-contains": "^6.5.0",
+    "@turf/boolean-overlap": "^6.5.0",
+    "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/helpers": "^6.5.0",
-    "@types/geojson": "^7946.0.10",
+    "@turf/line-intersect": "^6.5.0",
     "geojson": "^0.5.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/geojson": "^7946.0.10"
+  }
 }

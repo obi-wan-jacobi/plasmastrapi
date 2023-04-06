@@ -1,8 +1,9 @@
 import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
-import { getAbsolutePose } from '@plasmastrapi/helpers';
-import { LabelComponent, StyleComponent } from '@plasmastrapi/presentation';
 import RenderingSystem from '../abstracts/RenderingSystem';
 import IViewport from '../interfaces/IViewport';
+import LabelComponent from '../components/LabelComponent';
+import StyleComponent from '../components/StyleComponent';
+import { getAbsolutePose } from '@plasmastrapi/geometry';
 
 export default class LabelSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {

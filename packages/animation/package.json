@@ -1,6 +1,6 @@
 {
-  "name": "@plasmastrapi/presentation",
-  "version": "1.0.5",
+  "name": "@plasmastrapi/animation",
+  "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,8 +15,9 @@
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.25",
-    "@plasmastrapi/ecs": "^1.0.10",
-    "@plasmastrapi/geometry": "^1.0.2"
+    "@plasmastrapi/ecs": "^1.0.11",
+    "@plasmastrapi/engine": "^1.0.14",
+    "@plasmastrapi/geometry": "^1.0.7"
   },
   "devDependencies": {}
 }

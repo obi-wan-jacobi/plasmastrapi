@@ -1,4 +1,4 @@
-import { IImage } from './ImageComponent';
+import { IImage } from '../../../engine/lib/components/ImageComponent';
 import { Component } from '@plasmastrapi/ecs';
 
 export interface IAnimation {

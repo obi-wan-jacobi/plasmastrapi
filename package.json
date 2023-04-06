@@ -9,7 +9,8 @@
     "packages/helpers",
     "packages/physics",
     "packages/presentation",
-    "packages/html5-canvas"
+    "packages/html5-canvas",
+    "packages/viewport"
   ],
   "version": "1.0.0",
   "description": "",
