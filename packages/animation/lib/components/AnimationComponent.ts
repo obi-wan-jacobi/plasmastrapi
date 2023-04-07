@@ -1,5 +1,5 @@
-import { IImage } from '../../../engine/lib/components/ImageComponent';
 import { Component } from '@plasmastrapi/ecs';
+import { IImage } from '@plasmastrapi/engine';
 
 export interface IAnimation {
   frame: number;

@@ -63,8 +63,7 @@ export default abstract class Entity extends Unique implements IEntity {
       });
       return this;
     }
-    this.$patch(ComponentClass, data);
-    return this;
+    return this.$patch(ComponentClass, data);
   }
 
   public $remove<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): void {

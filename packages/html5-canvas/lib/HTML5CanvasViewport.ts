@@ -81,14 +81,20 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
   @Atomic
   private __drawImage({ pose, image }: { pose: IPose; image: IImage }): void {
     const asset = this.load(image.src || './favicon.ico');
-    this.ctx.translate(pose.x, pose.y);
+    const x = pose.x + (image.offset?.x || 0);
+    const y = pose.y + (image.offset?.y || 0);
+    this.ctx.translate(x, y);
     this.ctx.rotate(image.rotate || 0);
     this.ctx.drawImage(
-      asset,
-      -(image.width || (asset.width as number)) / 2,
-      -(image.height || (asset.height as number)) / 2,
-      image.width || (asset.width as number),
-      image.height || (asset.height as number),
+      /* image: */ asset,
+      /* sx:    */ image.crop?.sourceX || 0,
+      /* sy:    */ image.crop?.sourceY || 0,
+      /* sw:    */ image.crop?.sourceWidth || image.width || (asset.width as number),
+      /* sh:    */ image.crop?.sourceHeight || image.height || (asset.height as number),
+      /* dx:    */ 0,
+      /* dy:    */ 0,
+      /* dw:    */ image.width || (asset.width as number),
+      /* dh:    */ image.height || (asset.height as number),
     );
   }
 

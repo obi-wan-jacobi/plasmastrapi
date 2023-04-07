@@ -3,7 +3,7 @@ import Engine from './Engine';
 import IEngine from './interfaces/IEngine';
 import IRenderingSystem from './interfaces/IRenderingSystem';
 import IViewport from './interfaces/IViewport';
-import ImageComponent, { IImage } from './components/ImageComponent';
+import ImageComponent, { IImage, IImageCrop } from './components/ImageComponent';
 import ImageSystem from './systems/ImageSystem';
 import LabelComponent, { ILabel } from './components/LabelComponent';
 import LabelSystem from './systems/LabelSystem';
@@ -17,6 +17,7 @@ export {
   RenderingSystem,
   ImageComponent,
   IImage,
+  IImageCrop,
   LabelComponent,
   ILabel,
   StyleComponent,

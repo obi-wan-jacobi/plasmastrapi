@@ -8,7 +8,7 @@
     "dist/**"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "./node_modules/.bin/rimraf ./dist && tsc"
   },
   "author": "obi-wan-jacobi",

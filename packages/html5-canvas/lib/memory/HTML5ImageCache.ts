@@ -7,7 +7,7 @@ export default class HTML5ImageCache {
     if (!this.__data.get(src)) {
       const image = new Image();
       image.src = src;
-      this.__data.set(src, new Image());
+      this.__data.set(src, image);
     }
     return this.__data.get(src)!;
   }
