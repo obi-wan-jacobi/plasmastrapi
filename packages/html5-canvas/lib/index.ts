@@ -1,5 +1,6 @@
 // <autogen>
 import HTML5CanvasElement from './HTML5CanvasElement';
+import HTML5CanvasViewport from './HTML5CanvasViewport';
 import HTML5ImageCache from './cache/HTML5ImageCache';
 import IController from './interfaces/IController';
 import IEvent from './interfaces/IEvent';
@@ -10,7 +11,6 @@ import IKeyboardEvent from './interfaces/IKeyboardEvent';
 import IMouseEvent from './interfaces/IMouseEvent';
 import InputController from './controllers/InputController';
 import InputHandler from './abstracts/InputHandler';
-import MyViewport from './HTML5CanvasViewport';
 import { KEYBOARD_EVENT } from './enums/KEYBOARD_EVENT';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
 import { observable } from './decorators/observable';
@@ -29,6 +29,6 @@ export {
   IKeyboardEvent,
   IMouseEvent,
   HTML5CanvasElement,
-  MyViewport,
+  HTML5CanvasViewport,
 };
 // </autogen>

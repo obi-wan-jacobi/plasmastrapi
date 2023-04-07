@@ -13,7 +13,7 @@ function Atomic({}, {}, descriptor: PropertyDescriptor): void {
   };
 }
 
-export default class MyViewport implements IViewport<CanvasImageSource> {
+export default class HTML5CanvasViewport implements IViewport<CanvasImageSource> {
   public readonly width: number;
   public readonly height: number;
 
