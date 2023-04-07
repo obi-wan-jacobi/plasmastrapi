@@ -29,7 +29,9 @@ class ComponentMaster implements IComponentMaster {
     return collection ? collection.forEach.bind(collection) : () => undefined;
   }
 
-  public find<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): (fn: (component: T) => boolean) => Volatile<T> {
+  public find<T extends IComponent<TArg>, TArg extends {}>(
+    ComponentCls: ComponentClass<T, TArg>,
+  ): (fn: (component: T) => boolean) => Volatile<T> {
     return (fn: (component: T) => boolean): Volatile<T> => {
       const result = this.__componentMap.read(ComponentCls.name)!.find(fn);
       if (result) {

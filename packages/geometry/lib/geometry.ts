@@ -30,7 +30,9 @@ export const fromPointsToGeoJSON = (points: IPoint[]): Feature<LineString, GeoJs
 };
 
 export const fromShapeToGeoJSON = (shape: IShape): Feature<Polygon, GeoJsonProperties> => {
-  return turf.polygon([shape.vertices.map((vertex) => [vertex.x, vertex.y]).concat([[shape.vertices[0].x, shape.vertices[0].y]])]);
+  return turf.polygon([
+    shape.vertices.map((vertex) => [vertex.x, vertex.y]).concat([[shape.vertices[0].x, shape.vertices[0].y]]),
+  ]);
 };
 
 export const fromGeoJSONCoordinatesToShapes = (geoJSON: Feature<Polygon | MultiPolygon, GeoJsonProperties>): IShape[] => {

@@ -66,8 +66,11 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
     this.systems.forEach((system: ISystem) => {
       if ((system as any).draw instanceof Function) {
         (system as IRenderingSystem).draw({
-          viewport: this.viewport,
+          entities: this.entities,
           components: this.components,
+          systems: this.systems,
+          delta: this.__delta,
+          viewport: this.viewport,
         });
       }
     });

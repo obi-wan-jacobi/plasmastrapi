@@ -1,28 +1,28 @@
 import { Void } from '@plasmastrapi/base';
 import { IImage, ILabel, IStyle, IViewport } from '@plasmastrapi/engine';
 import { IPoint, IPose } from '@plasmastrapi/geometry';
-import HTML5ImageCache from './memory/HTML5ImageCache';
+import HTML5ImageCache from './cache/HTML5ImageCache';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Atomic({}, {}, descriptor: PropertyDescriptor): void {
   const fn = descriptor.value;
   descriptor.value = function (): void {
-    this.ctx.save();
+    this.__ctx.save();
     fn.apply(this, arguments);
-    this.ctx.restore();
+    this.__ctx.restore();
   };
 }
 
-export default class HTML5CanvasViewport implements IViewport<CanvasImageSource> {
-  public ctx: CanvasRenderingContext2D;
-  public width: number;
-  public height: number;
+export default class MyViewport implements IViewport<CanvasImageSource> {
+  public readonly width: number;
+  public readonly height: number;
 
+  private __ctx: CanvasRenderingContext2D;
   private __imageBuffer = new HTML5ImageCache();
-
   private __zBuffer: Array<{ method: Void<any>; payload: {}; zIndex: number }> = [];
 
   public constructor({ canvas }: { canvas: HTMLCanvasElement }) {
-    this.ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    this.__ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     this.width = canvas.clientWidth;
     this.height = canvas.clientHeight;
   }
@@ -32,7 +32,7 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
   }
 
   public render(): void {
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.__ctx.clearRect(0, 0, this.width, this.height);
     const zOrdered = this.__zBuffer.sort((a, b) => a.zIndex - b.zIndex);
     zOrdered.forEach((target) => target.method.apply(this, [target.payload]));
     this.__zBuffer = [];
@@ -83,9 +83,9 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
     const asset = this.load(image.src || './favicon.ico');
     const x = pose.x + (image.offset?.x || 0);
     const y = pose.y + (image.offset?.y || 0);
-    this.ctx.translate(x, y);
-    this.ctx.rotate(image.rotate || 0);
-    this.ctx.drawImage(
+    this.__ctx.translate(x, y);
+    this.__ctx.rotate(image.rotate || 0);
+    this.__ctx.drawImage(
       /* image: */ asset,
       /* sx:    */ image.crop?.sourceX || 0,
       /* sy:    */ image.crop?.sourceY || 0,
@@ -100,44 +100,44 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
 
   @Atomic
   private __drawShape({ path, style }: { path: IPoint[]; style: IStyle }): void {
-    this.ctx.globalAlpha = style.opacity;
-    this.ctx.strokeStyle = style.colour;
-    this.ctx.beginPath();
+    this.__ctx.globalAlpha = style.opacity;
+    this.__ctx.strokeStyle = style.colour;
+    this.__ctx.beginPath();
     path.forEach((p: IPoint) => {
-      this.ctx.lineTo(p.x, p.y);
+      this.__ctx.lineTo(p.x, p.y);
     });
-    this.ctx.fillStyle = style.fill;
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.stroke();
+    this.__ctx.fillStyle = style.fill;
+    this.__ctx.fill();
+    this.__ctx.closePath();
+    this.__ctx.stroke();
   }
 
   @Atomic
   private __drawLine({ path, style }: { path: IPoint[]; style: IStyle }): void {
-    this.ctx.strokeStyle = style.colour;
-    this.ctx.beginPath();
+    this.__ctx.strokeStyle = style.colour;
+    this.__ctx.beginPath();
     path.forEach((p: IPoint) => {
-      this.ctx.lineTo(p.x, p.y);
+      this.__ctx.lineTo(p.x, p.y);
     });
-    this.ctx.stroke();
+    this.__ctx.stroke();
   }
 
   @Atomic
   private __drawLabel({ pose, style, label }: { pose: IPose; style: IStyle; label: ILabel }): void {
-    this.ctx.fillStyle = style.colour;
-    this.ctx.font = `${label.fontSize}px Arial`;
-    this.ctx.fillText(label.text, pose.x + label.offset.x, pose.y + label.offset.y);
+    this.__ctx.fillStyle = style.colour;
+    this.__ctx.font = `${label.fontSize}px Arial`;
+    this.__ctx.fillText(label.text, pose.x + label.offset.x, pose.y + label.offset.y);
   }
 
   @Atomic
   private __drawCircle({ position, radius, style }: { position: IPoint; radius: number; style: IStyle }): void {
-    this.ctx.globalAlpha = style.opacity;
-    this.ctx.strokeStyle = style.colour;
-    this.ctx.fillStyle = style.fill;
-    this.ctx.beginPath();
-    this.ctx.arc(position.x, position.y, radius, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.stroke();
+    this.__ctx.globalAlpha = style.opacity;
+    this.__ctx.strokeStyle = style.colour;
+    this.__ctx.fillStyle = style.fill;
+    this.__ctx.beginPath();
+    this.__ctx.arc(position.x, position.y, radius, 0, 2 * Math.PI);
+    this.__ctx.fill();
+    this.__ctx.closePath();
+    this.__ctx.stroke();
   }
 }

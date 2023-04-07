@@ -1,6 +1,12 @@
-import { IComponentMaster, ISystem } from '@plasmastrapi/ecs';
+import { IComponentMaster, IEntityMaster, ISystem, ISystemMaster } from '@plasmastrapi/ecs';
 import IViewport from './IViewport';
 
 export default interface IRenderingSystem extends ISystem {
-  draw({}: { viewport: IViewport<any>; components: IComponentMaster }): void;
+  draw({}: {
+    entities: IEntityMaster;
+    components: IComponentMaster;
+    systems: ISystemMaster;
+    delta: number;
+    viewport: IViewport<any>;
+  }): void;
 }

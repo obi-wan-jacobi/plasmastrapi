@@ -9,5 +9,11 @@ export default abstract class RenderingSystem extends System {
     delta: number;
     viewport: { width: number; height: number };
   }): void {}
-  public abstract draw({}: { viewport: IViewport<any>; components: IComponentMaster }): void;
+  public abstract draw({}: {
+    entities: IEntityMaster;
+    components: IComponentMaster;
+    systems: ISystemMaster;
+    delta: number;
+    viewport: IViewport<any>;
+  }): void;
 }

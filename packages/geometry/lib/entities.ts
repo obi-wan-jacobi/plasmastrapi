@@ -41,7 +41,15 @@ export const entityTouchesLine = (entity: IEntity, points: IPoint[]): boolean =>
   return lineIntersect(polygon, line).features.length > 0;
 };
 
-export const addWidthAndHeightAsShapeComponent = ({ entity, width, height }: { entity: IEntity; width: number; height: number }): void => {
+export const addWidthAndHeightAsShapeComponent = ({
+  entity,
+  width,
+  height,
+}: {
+  entity: IEntity;
+  width: number;
+  height: number;
+}): void => {
   entity.$add(ShapeComponent, {
     vertices: [
       { x: -width / 2, y: -height / 2 },
