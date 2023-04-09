@@ -1,11 +1,11 @@
 // <autogen>
-import AccelerationComponent, { IAcceleration } from './physics/components/AccelerationComponent';
-import AccelerationSystem from './physics/systems/AccelerationSystem';
-import CollisionComponent from './physics/components/CollisionComponent';
-import CollisionSystem from './physics/systems/CollisionSystem';
-import RigidBodyComponent from './physics/components/RigidBodyComponent';
-import VelocityComponent, { IVelocity } from './physics/components/VelocityComponent';
-import VelocitySystem from './physics/systems/VelocitySystem';
+import AccelerationComponent, { IAcceleration } from './components/AccelerationComponent';
+import AccelerationSystem from './systems/AccelerationSystem';
+import CollisionComponent from './components/CollisionComponent';
+import CollisionSystem from './systems/CollisionSystem';
+import RigidBodyComponent from './components/RigidBodyComponent';
+import VelocityComponent, { IVelocity } from './components/VelocityComponent';
+import VelocitySystem from './systems/VelocitySystem';
 export {
   AccelerationComponent,
   IAcceleration,
