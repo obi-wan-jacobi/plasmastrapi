@@ -55,7 +55,8 @@ export default abstract class Entity extends Unique implements IEntity {
   }
 
   public $add<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg): this {
-    if (!this.__components.read(ComponentClass.name)) {
+    const component = this.__components.read(ComponentClass.name);
+    if (!component) {
       const component = new ComponentClass({ data, entity: this });
       this.__components.write({
         key: ComponentClass.name,
@@ -63,7 +64,8 @@ export default abstract class Entity extends Unique implements IEntity {
       });
       return this;
     }
-    return this.$patch(ComponentClass, data);
+    component.mutate(data);
+    return this;
   }
 
   public $remove<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): void {
