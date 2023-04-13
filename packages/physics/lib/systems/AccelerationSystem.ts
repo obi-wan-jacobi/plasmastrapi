@@ -14,9 +14,11 @@ export default class AccelerationSystem extends System {
         y: v.y + (a.y * dt) / 1000,
         w: v.w + (a.w * dt) / 1000,
         $: {
-          x: v.x,
-          y: v.y,
-          w: v.w,
+          previous: {
+            x: v.x,
+            y: v.y,
+            w: v.w,
+          },
         },
       });
     });
