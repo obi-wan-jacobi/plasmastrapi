@@ -1,7 +1,7 @@
 import { Void } from '@plasmastrapi/base';
-import { IImage, ILabel, IStyle, IViewport } from '@plasmastrapi/engine';
 import { IPoint, IPose } from '@plasmastrapi/geometry';
 import HTML5ImageCache from './cache/HTML5ImageCache';
+import { IImage, ILabel, IStyle, IViewport } from '@plasmastrapi/viewport';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Atomic({}, {}, descriptor: PropertyDescriptor): void {

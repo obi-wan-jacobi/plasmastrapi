@@ -1,11 +1,10 @@
 import { Dictionary, IDictionary, Void } from '@plasmastrapi/base';
-import { Entity, Ctor, IComponent } from '@plasmastrapi/ecs';
-import { PoseComponent } from '@plasmastrapi/geometry';
+import { Entity, Ctor, IComponent, PoseComponent, StyleComponent } from '@plasmastrapi/ecs';
 import { observable } from './decorators/observable';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
 import IHTML5CanvasElement from './interfaces/IHTML5CanvasElement';
 import IMouseEvent from './interfaces/IMouseEvent';
-import { COLOUR, StyleComponent } from '@plasmastrapi/engine';
+import { COLOUR } from '@plasmastrapi/engine';
 
 export default class HTML5CanvasElement extends Entity implements IHTML5CanvasElement {
   protected _observedMethods: IDictionary<IDictionary<Void<any>>>;

@@ -1,5 +1,5 @@
 import { IComponentMaster, IEntityMaster, ISystem, ISystemMaster } from '@plasmastrapi/ecs';
-import IViewport from './IViewport';
+import { IViewport } from '@plasmastrapi/viewport';
 
 export default interface IRenderingSystem extends ISystem {
   draw({}: {

@@ -1,8 +1,8 @@
-import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
-import { ShapeComponent, getAbsolutePose, transformShape } from '@plasmastrapi/geometry';
+import { IComponentMaster, IEntity, ShapeComponent, StyleComponent } from '@plasmastrapi/ecs';
+import { transformShape } from '@plasmastrapi/geometry';
 import RenderingSystem from '../abstracts/RenderingSystem';
-import IViewport from '../interfaces/IViewport';
-import StyleComponent from '../components/StyleComponent';
+import { IViewport } from '@plasmastrapi/viewport';
+import { getAbsolutePose } from '@plasmastrapi/helpers';
 
 export default class ShapeSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {

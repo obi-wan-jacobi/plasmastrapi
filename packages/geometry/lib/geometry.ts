@@ -1,8 +1,9 @@
 import { Feature, GeoJsonProperties, MultiPolygon, Polygon, LineString } from 'geojson';
 import * as turf from '@turf/helpers';
 import turfBBOX from '@turf/bbox';
-import { IPoint, IPose } from './components/PoseComponent';
-import { IShape } from './components/ShapeComponent';
+import { IPoint } from './interfaces/IPoint';
+import { IShape } from './interfaces/IShape';
+import { IPose } from './interfaces/IPose';
 
 export const rotatePointAboutOrigin = ({ point, orientation }: { point: IPoint; orientation: number }): IPoint => {
   const s = Math.sin(orientation);

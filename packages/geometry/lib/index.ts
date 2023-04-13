@@ -1,15 +1,8 @@
 // <autogen>
-import LineComponent, { ILine } from './components/LineComponent';
-import PoseComponent, { IPoint, IPose } from './components/PoseComponent';
-import ShapeComponent, { IShape } from './components/ShapeComponent';
-import {
-  entityContainsPoint,
-  entitiesTouch,
-  entityContainsEntity,
-  entityTouchesLine,
-  addWidthAndHeightAsShapeComponent,
-  getAbsolutePose,
-} from './entities';
+import { ILine } from './interfaces/ILine';
+import { IPoint } from './interfaces/IPoint';
+import { IPose } from './interfaces/IPose';
+import { IShape } from './interfaces/IShape';
 import {
   rotatePointAboutOrigin,
   transformShape,
@@ -23,19 +16,10 @@ import {
   getDirectionVectorAB,
 } from './geometry';
 export {
-  LineComponent,
   ILine,
-  PoseComponent,
   IPoint,
   IPose,
-  ShapeComponent,
   IShape,
-  entityContainsPoint,
-  entitiesTouch,
-  entityContainsEntity,
-  entityTouchesLine,
-  addWidthAndHeightAsShapeComponent,
-  getAbsolutePose,
   rotatePointAboutOrigin,
   transformShape,
   fromPointsToGeoJSON,

@@ -1,6 +1,6 @@
-import { IComponentMaster, IEntity, System } from '@plasmastrapi/ecs';
-import { PoseComponent, entitiesTouch } from '@plasmastrapi/geometry';
+import { IComponentMaster, IEntity, PoseComponent, System } from '@plasmastrapi/ecs';
 import VelocityComponent from '../components/VelocityComponent';
+import { entitiesTouch } from '@plasmastrapi/helpers';
 
 export default class CollisionSystem extends System {
   public once({ components, delta }: { components: IComponentMaster; delta: number }): void {

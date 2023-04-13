@@ -1,12 +1,4 @@
 import { Component } from '@plasmastrapi/ecs';
-
-export interface IPoint {
-  x: number;
-  y: number;
-}
-
-export interface IPose extends IPoint {
-  a: number;
-}
+import { IPose } from '@plasmastrapi/geometry';
 
 export default class PoseComponent extends Component<IPose> {}

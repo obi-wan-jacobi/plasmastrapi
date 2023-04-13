@@ -1,0 +1,22 @@
+{
+  "name": "@plasmastrapi/helpers",
+  "version": "1.0.10",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+  },
+  "author": "obi-wan-jacobi",
+  "license": "",
+  "dependencies": {
+    "@plasmastrapi/ecs": "^1.0.15",
+    "@plasmastrapi/engine": "^1.0.19",
+    "@plasmastrapi/geometry": "^1.0.8"
+  },
+  "devDependencies": {}
+}

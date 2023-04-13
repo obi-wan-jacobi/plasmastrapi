@@ -1,7 +1,4 @@
-import { IPoint } from './PoseComponent';
 import { Component } from '@plasmastrapi/ecs';
+import { IShape } from '@plasmastrapi/geometry';
 
-export interface IShape {
-  vertices: IPoint[];
-}
 export default class ShapeComponent extends Component<IShape> {}

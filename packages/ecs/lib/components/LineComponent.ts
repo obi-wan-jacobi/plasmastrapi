@@ -1,8 +1,4 @@
 import { Component } from '@plasmastrapi/ecs';
-import { IPoint } from './PoseComponent';
-
-export interface ILine {
-  path: Array<IPoint>;
-}
+import { ILine } from '@plasmastrapi/geometry';
 
 export default class LineComponent extends Component<ILine> {}

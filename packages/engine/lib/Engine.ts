@@ -1,7 +1,7 @@
 import IEngine from './interfaces/IEngine';
-import IViewport from './interfaces/IViewport';
 import { COMPONENTS, ENTITIES, IComponentMaster, IEntityMaster, ISystem, ISystemMaster, Stor, SYSTEMS } from '@plasmastrapi/ecs';
 import IRenderingSystem from './interfaces/IRenderingSystem';
+import { IViewport } from '@plasmastrapi/viewport';
 
 export default class Engine<TImageSource> implements IEngine<TImageSource> {
   public entities: IEntityMaster;
@@ -57,7 +57,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
         components: this.components,
         systems: this.systems,
         delta: this.__delta,
-        viewport: { width: this.viewport.width, height: this.viewport.height },
+        viewport: this.viewport,
       }),
     );
   }

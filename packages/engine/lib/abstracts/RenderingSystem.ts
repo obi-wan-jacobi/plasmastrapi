@@ -1,5 +1,5 @@
 import { System, IComponentMaster, IEntityMaster, ISystemMaster } from '@plasmastrapi/ecs';
-import IViewport from '../interfaces/IViewport';
+import { IViewport } from '@plasmastrapi/viewport';
 
 export default abstract class RenderingSystem extends System {
   public once({}: {
@@ -7,7 +7,7 @@ export default abstract class RenderingSystem extends System {
     components: IComponentMaster;
     systems: ISystemMaster;
     delta: number;
-    viewport: { width: number; height: number };
+    viewport: IViewport<any>;
   }): void {}
   public abstract draw({}: {
     entities: IEntityMaster;

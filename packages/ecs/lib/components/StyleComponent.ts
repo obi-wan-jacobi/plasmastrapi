@@ -1,10 +1,4 @@
 import { Component } from '@plasmastrapi/ecs';
-
-export interface IStyle {
-  colour: string;
-  fill: string;
-  opacity: number;
-  zIndex: number;
-}
+import { IStyle } from '@plasmastrapi/viewport';
 
 export default class StyleComponent extends Component<IStyle> {}
