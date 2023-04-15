@@ -91,6 +91,15 @@ export default abstract class Entity extends Unique implements IEntity {
     return component ? component.copy() : undefined;
   }
 
+  public $mutate<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg): this {
+    const component = this.__components.read(ComponentClass.name);
+    if (!component) {
+      throw new Error(`${this.constructor.name} does not have a ${ComponentClass.name} to $mutate.`);
+    }
+    component.mutate(data);
+    return this;
+  }
+
   public $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg | {}): this {
     const component = this.__components.read(ComponentClass.name);
     if (!component) {

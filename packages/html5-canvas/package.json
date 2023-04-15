@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/html5-canvas",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,9 +15,9 @@
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.25",
-    "@plasmastrapi/ecs": "^1.0.15",
+    "@plasmastrapi/ecs": "^1.0.17",
     "@plasmastrapi/engine": "^1.0.19",
-    "@plasmastrapi/geometry": "^1.0.8",
+    "@plasmastrapi/geometry": "^1.0.9",
     "@plasmastrapi/viewport": "^1.0.0"
   },
   "devDependencies": {}

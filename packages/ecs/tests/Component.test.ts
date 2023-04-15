@@ -17,7 +17,7 @@ interface IMyComponentData {
 
 class MyComponent extends Component<IMyComponentData> {}
 
-describe('Component', () => {
+describe(Component.name, () => {
   it('mutate should respect and persist undefined values', () => {
     const myEntity = new MyEntity();
     const myComponentData = {

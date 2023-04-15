@@ -12,7 +12,7 @@ export default class GravitySystem extends System {
       entity.$patch(VelocityComponent, {
         x: v.x + (x * dt) / 1000,
         y: v.y + (y * dt) / 1000,
-        w: v.w + (0 * dt) / 1000,
+        w: v.w,
       });
     });
   }

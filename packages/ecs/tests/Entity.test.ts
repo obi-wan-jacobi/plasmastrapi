@@ -8,7 +8,7 @@ interface IMyComponentData {
 
 class MyComponent extends Component<IMyComponentData> {}
 
-describe('Entity', () => {
+describe(Entity.name, () => {
   it('should overwrite pre-added components', () => {
     const myEntity = new MyEntity();
     myEntity.$add(MyComponent, { property1: 'value1' });

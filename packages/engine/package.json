@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/engine",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,8 +15,8 @@
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.25",
-    "@plasmastrapi/ecs": "^1.0.15",
-    "@plasmastrapi/geometry": "^1.0.8",
+    "@plasmastrapi/ecs": "^1.0.17",
+    "@plasmastrapi/geometry": "^1.0.9",
     "@plasmastrapi/helpers": "^1.0.10",
     "@plasmastrapi/viewport": "^1.0.0"
   },

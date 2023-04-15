@@ -1,13 +1,13 @@
 import { IComponentMaster, IEntity } from '@plasmastrapi/ecs';
 import AnimationComponent from '../components/AnimationComponent';
 import { RenderingSystem } from '@plasmastrapi/engine';
-import { IViewport } from '@plasmastrapi/viewport';
 import { getAbsolutePose } from '@plasmastrapi/helpers';
+import { IViewport } from '@plasmastrapi/viewport';
 
 export default class AnimationSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {
+    const now = Date.now();
     components.forEvery(AnimationComponent)((animationComponent) => {
-      const now = Date.now();
       const pose = getAbsolutePose(animationComponent.$entity as IEntity);
       const animation = animationComponent.copy();
       if (animation.$ === undefined) {
