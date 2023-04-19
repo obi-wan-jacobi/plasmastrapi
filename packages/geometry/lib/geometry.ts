@@ -1,9 +1,24 @@
-import { Feature, GeoJsonProperties, MultiPolygon, Polygon, LineString } from 'geojson';
-import * as turf from '@turf/helpers';
-import turfBBOX from '@turf/bbox';
 import { IPoint } from './interfaces/IPoint';
 import { IShape } from './interfaces/IShape';
 import { IPose } from './interfaces/IPose';
+
+import * as geojson from 'geojson';
+import * as turf from '@turf/helpers';
+import area from '@turf/area';
+import bbox from '@turf/bbox';
+import difference from '@turf/difference';
+import kinks from '@turf/kinks';
+import simplify from '@turf/simplify';
+import unkinkPolygon from '@turf/unkink-polygon';
+
+export { turf, geojson, area, bbox, difference, kinks, simplify, unkinkPolygon };
+
+export const booleanContains = require('@turf/boolean-contains').default;
+export const booleanOverlap = require('@turf/boolean-overlap').default;
+export const booleanPointInPolygon = require('@turf/boolean-point-in-polygon').default;
+export const booleanPointOnLine = require('@turf/boolean-point-on-line').default;
+export const centerOfMass = require('@turf/center-of-mass').default;
+export const lineIntersect = require('@turf/line-intersect').default;
 
 export const rotatePointAboutOrigin = ({ point, orientation }: { point: IPoint; orientation: number }): IPoint => {
   const s = Math.sin(orientation);
@@ -26,17 +41,19 @@ export const transformShape = (shape: IShape, pose: IPose): IShape => {
   };
 };
 
-export const fromPointsToGeoJSON = (points: IPoint[]): Feature<LineString, GeoJsonProperties> => {
+export const fromPointsToGeoJSON = (points: IPoint[]): geojson.Feature<geojson.LineString, geojson.GeoJsonProperties> => {
   return turf.lineString(points.map((point) => [point.x, point.y]));
 };
 
-export const fromShapeToGeoJSON = (shape: IShape): Feature<Polygon, GeoJsonProperties> => {
+export const fromShapeToGeoJSON = (shape: IShape): geojson.Feature<geojson.Polygon, geojson.GeoJsonProperties> => {
   return turf.polygon([
     shape.vertices.map((vertex) => [vertex.x, vertex.y]).concat([[shape.vertices[0].x, shape.vertices[0].y]]),
   ]);
 };
 
-export const fromGeoJSONCoordinatesToShapes = (geoJSON: Feature<Polygon | MultiPolygon, GeoJsonProperties>): IShape[] => {
+export const fromGeoJSONCoordinatesToShapes = (
+  geoJSON: geojson.Feature<geojson.Polygon | geojson.MultiPolygon, geojson.GeoJsonProperties>,
+): IShape[] => {
   if (!geoJSON) {
     return [];
   }
@@ -67,12 +84,12 @@ export interface IBoundary {
 }
 export const fromShapeToBoundary = (shape: IShape): IBoundary => {
   const geojson = fromShapeToGeoJSON(shape);
-  const bbox = turfBBOX(geojson);
+  const bb = bbox(geojson);
   return {
-    minX: bbox[0],
-    minY: bbox[1],
-    maxX: bbox[2],
-    maxY: bbox[3],
+    minX: bb[0],
+    minY: bb[1],
+    maxX: bb[2],
+    maxY: bb[3],
   };
 };
 

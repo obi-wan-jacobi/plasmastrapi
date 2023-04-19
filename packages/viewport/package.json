@@ -14,7 +14,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/geometry": "^1.0.9"
+    "@plasmastrapi/geometry": "^1.0.17"
   },
   "devDependencies": {}
 }

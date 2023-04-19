@@ -1,4 +1,4 @@
-import { IComponentMaster, IEntity, ShapeComponent, StyleComponent } from '@plasmastrapi/ecs';
+import { IComponentMaster, PoseComponent, ShapeComponent, StyleComponent } from '@plasmastrapi/ecs';
 import { transformShape } from '@plasmastrapi/geometry';
 import RenderingSystem from '../abstracts/RenderingSystem';
 import { IViewport } from '@plasmastrapi/viewport';
@@ -6,15 +6,16 @@ import { getAbsolutePose } from '@plasmastrapi/helpers';
 
 export default class ShapeSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {
-    components.forEvery(ShapeComponent)((shape) => {
-      const pose = getAbsolutePose(shape.$entity as IEntity);
-      const style = shape.$entity.$copy(StyleComponent);
-      if (!pose || !style) {
+    components.forEvery(StyleComponent)((styleComponent) => {
+      const entity = styleComponent.$entity;
+      if (!entity.$has(ShapeComponent) || !entity.$has(PoseComponent)) {
         return;
       }
+      const pose = getAbsolutePose(entity);
+      const shape = entity.$copy(ShapeComponent);
       viewport.drawShape({
-        path: transformShape(shape.copy(), pose).vertices,
-        style,
+        path: transformShape(shape, pose).vertices,
+        style: styleComponent.copy(),
       });
     });
   }

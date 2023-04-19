@@ -22,12 +22,10 @@ export default abstract class Entity extends Unique implements IEntity {
   }
 
   public set $parent(parent: Volatile<IEntity>) {
-    if (this.$parent) {
-      console.warn(`${this.constructor.name} already has a parent: ${this.$parent.constructor.name}`);
-      // throw new Error(
-      //   `${child.constructor.name} already has a parent: ${child.$parent.constructor.name}`
-      // );
+    if (this.$parent && parent !== undefined) {
+      throw new Error(`${this.constructor.name} already has a parent: ${this.$parent.constructor.name}`);
     }
+    this.$parent?.$removeChild(this);
     this._parent = parent;
   }
 
@@ -37,13 +35,13 @@ export default abstract class Entity extends Unique implements IEntity {
 
   public $appendChild<T extends IEntity>(child: T): T {
     this._children.write({ key: child.$id, value: child });
-    (child as unknown as IEntity).$parent = this;
+    child.$parent = this;
     return child;
   }
 
   public $removeChild<T extends IEntity>(child: T): T {
     this._children.delete(child.$id);
-    (child as unknown as IEntity).$parent = undefined;
+    child.$parent = undefined;
     return child;
   }
 
@@ -69,10 +67,7 @@ export default abstract class Entity extends Unique implements IEntity {
   }
 
   public $remove<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): void {
-    const component = this.__components.read(ComponentClass.name);
-    if (!component) {
-      return;
-    }
+    const component = this.__throwIfMissingComponent(ComponentClass, this.$remove.name);
     this.__components.delete(ComponentClass.name);
     IOC.components.purge(component);
   }
@@ -83,37 +78,42 @@ export default abstract class Entity extends Unique implements IEntity {
         return result && this.$has(component);
       }, true);
     }
-    return !!this.$copy(ComponentClass);
+    return !!this.__components.read(ComponentClass.name);
   }
 
-  public $copy<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): Volatile<TArg> {
-    const component = this.__components.read(ComponentClass.name);
-    return component ? component.copy() : undefined;
+  public $copy<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): TArg {
+    const component = this.__throwIfMissingComponent(ComponentClass, this.$copy.name);
+    return component.copy();
   }
 
   public $mutate<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg): this {
-    const component = this.__components.read(ComponentClass.name);
-    if (!component) {
-      throw new Error(`${this.constructor.name} does not have a ${ComponentClass.name} to $mutate.`);
-    }
+    const component = this.__throwIfMissingComponent(ComponentClass, this.$mutate.name);
     component.mutate(data);
     return this;
   }
 
   public $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg | {}): this {
-    const component = this.__components.read(ComponentClass.name);
-    if (!component) {
-      throw new Error(`${this.constructor.name} does not have a ${ComponentClass.name} to $patch.`);
-    }
+    const component = this.__throwIfMissingComponent(ComponentClass, this.$patch.name);
     component.patch(data);
     return this;
   }
 
-  public $get<T extends IComponent<any>>(ComponentClass: Ctor<T, any>): Volatile<IComponent<any>> {
-    return this.__components.read(ComponentClass.name);
+  public $get<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): IComponent<TArg> {
+    return this.__throwIfMissingComponent(ComponentClass, this.$get.name);
   }
 
   public $forEach(fn: Void<IComponent<any>>): void {
     return this.__components.forEach(fn);
+  }
+
+  private __throwIfMissingComponent<T extends IComponent<TArg>, TArg extends {}>(
+    ComponentClass: Ctor<T, TArg>,
+    callingMethod: string,
+  ): IComponent<TArg> {
+    const component = this.__components.read(ComponentClass.name);
+    if (!component) {
+      throw new Error(`${this.constructor.name} does not have a ${ComponentClass.name} to ${callingMethod}.`);
+    }
+    return component;
   }
 }

@@ -1,3 +1,4 @@
+import { IViewport } from '@plasmastrapi/viewport';
 import IComponentMaster from './IComponentMaster';
 import IEntityMaster from './IEntityMaster';
 import ISystemMaster from './ISystemMaster';
@@ -8,6 +9,6 @@ export default interface ISystem {
     components: IComponentMaster;
     systems: ISystemMaster;
     delta: number;
-    viewport: { width: number; height: number };
+    viewport: IViewport<any>;
   }): void;
 }

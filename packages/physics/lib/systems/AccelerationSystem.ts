@@ -8,7 +8,7 @@ export default class AccelerationSystem extends System {
       const a = acceleration.copy();
       const dt = delta;
       const entity = acceleration.$entity;
-      const v = entity.$copy(VelocityComponent)!;
+      const v = entity.$copy(VelocityComponent);
       entity.$mutate(VelocityComponent, {
         x: v.x + (a.x * dt) / 1000,
         y: v.y + (a.y * dt) / 1000,

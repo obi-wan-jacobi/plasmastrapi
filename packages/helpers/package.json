@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/helpers",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,8 +14,10 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.17",
-    "@plasmastrapi/geometry": "^1.0.9"
+    "@plasmastrapi/ecs": "^1.0.20",
+    "@plasmastrapi/geometry": "^1.0.17",
+    "@plasmastrapi/math": "^1.0.1",
+    "@plasmastrapi/physics": "^1.0.8"
   },
   "devDependencies": {}
 }

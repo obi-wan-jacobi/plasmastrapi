@@ -44,9 +44,7 @@ export default class HTML5CanvasElement extends Entity implements IHTML5CanvasEl
     }
     const subscribers = this._observedMethods.read(method);
     if (!subscribers) {
-      console.warn(`ID <${id}> is not subscribed to method <${method}> on ${this.constructor.name}.`);
-      return;
-      // throw new Error(`ID <${id}> is not subscribed to method <${method}> on ${this.constructor.name}.`);
+      throw new Error(`ID <${id}> is not subscribed to method <${method}> on ${this.constructor.name}.`);
     }
     subscribers.delete(id);
   }

@@ -5,20 +5,31 @@ import CollisionComponent from './components/CollisionComponent';
 import CollisionSystem from './systems/CollisionSystem';
 import GravityComponent from './components/GravityComponent';
 import GravitySystem from './systems/GravitySystem';
+import ImpulseComponent, { IImpulse } from './components/ImpulseComponent';
+import ImpulseSystem from './systems/ImpulseSystem';
+import LevelComponent from './components/LevelComponent';
+import PhysicalComponent, { IPhysical } from './components/PhysicalComponent';
 import RigidBodyComponent from './components/RigidBodyComponent';
 import VelocityComponent, { IVelocity } from './components/VelocityComponent';
-import VelocitySystem from './systems/VelocitySystem';
+import VelocitySystem, { getNextPose } from './systems/VelocitySystem';
 export {
   AccelerationComponent,
   IAcceleration,
   CollisionComponent,
   GravityComponent,
+  ImpulseComponent,
+  IImpulse,
+  LevelComponent,
+  PhysicalComponent,
+  IPhysical,
   RigidBodyComponent,
   VelocityComponent,
   IVelocity,
   AccelerationSystem,
   CollisionSystem,
   GravitySystem,
+  ImpulseSystem,
   VelocitySystem,
+  getNextPose,
 };
 // </autogen>

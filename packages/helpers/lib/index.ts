@@ -7,6 +7,12 @@ import {
   addWidthAndHeightAsShapeComponent,
   getAbsolutePose,
 } from './entities';
+import {
+  getLevelShape,
+  findLevelIntersectionsWithLine,
+  getIntersectingEdgeOfLevel,
+  getResultantVelocityAfterCollision,
+} from './level';
 export {
   entityContainsPoint,
   entitiesTouch,
@@ -14,5 +20,9 @@ export {
   entityTouchesLine,
   addWidthAndHeightAsShapeComponent,
   getAbsolutePose,
+  getLevelShape,
+  findLevelIntersectionsWithLine,
+  getIntersectingEdgeOfLevel,
+  getResultantVelocityAfterCollision,
 };
 // </autogen>

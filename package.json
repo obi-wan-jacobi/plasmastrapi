@@ -12,7 +12,8 @@
     "packages/html5-canvas",
     "packages/viewport",
     "packages/viewport",
-    "packages/helpers"
+    "packages/helpers",
+    "packages/config"
   ],
   "version": "1.0.0",
   "description": "",

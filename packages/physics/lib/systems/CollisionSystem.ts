@@ -40,7 +40,7 @@ function rollForwardEntityPose(entity: IEntity, delta: number) {
 }
 
 function rollEntityPose(entity: IEntity, delta: number, sign: 1 | -1) {
-  let pose = entity.$copy(PoseComponent)!;
+  let pose = entity.$copy(PoseComponent);
   const velocity = entity.$copy(VelocityComponent) || { x: 0, y: 0, w: 0 };
   pose = {
     x: pose.x + sign * velocity.x * delta,
@@ -53,8 +53,8 @@ function rollEntityPose(entity: IEntity, delta: number, sign: 1 | -1) {
 function rollBackParents(entity: IEntity) {
   let target: IEntity | undefined = entity;
   while (!!target && target.$copy(PoseComponent) && target.$parent) {
-    const childPose = target.$copy(PoseComponent)!;
-    const childRelativePose = target.$copy(PoseComponent)!;
+    const childPose = target.$copy(PoseComponent);
+    const childRelativePose = target.$copy(PoseComponent);
     target.$parent.$patch(PoseComponent, {
       x: childPose.x - childRelativePose.x,
       y: childPose.y - childRelativePose.y,

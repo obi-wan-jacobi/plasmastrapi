@@ -15,10 +15,10 @@
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.25",
-    "@plasmastrapi/ecs": "^1.0.17",
-    "@plasmastrapi/engine": "^1.0.19",
-    "@plasmastrapi/geometry": "^1.0.9",
-    "@plasmastrapi/helpers": "^1.0.10",
+    "@plasmastrapi/ecs": "^1.0.20",
+    "@plasmastrapi/engine": "^1.0.21",
+    "@plasmastrapi/geometry": "^1.0.17",
+    "@plasmastrapi/helpers": "^1.0.13",
     "@plasmastrapi/viewport": "^1.0.0"
   },
   "devDependencies": {}
