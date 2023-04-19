@@ -14,7 +14,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/math": "^1.0.1",
+    "@plasmastrapi/math": "^1.0.2",
     "@turf/area": "^6.5.0",
     "@turf/bbox": "^6.5.0",
     "@turf/boolean-contains": "^6.5.0",

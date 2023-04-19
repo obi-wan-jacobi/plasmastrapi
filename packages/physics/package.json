@@ -16,7 +16,7 @@
   "dependencies": {
     "@plasmastrapi/ecs": "^1.0.20",
     "@plasmastrapi/geometry": "^1.0.17",
-    "@plasmastrapi/helpers": "^1.0.13"
+    "@plasmastrapi/helpers": "^1.0.14"
   },
   "devDependencies": {}
 }

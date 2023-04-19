@@ -14,10 +14,10 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.25",
+    "@plasmastrapi/base": "^1.0.27",
     "@plasmastrapi/ecs": "^1.0.20",
     "@plasmastrapi/geometry": "^1.0.17",
-    "@plasmastrapi/helpers": "^1.0.13",
+    "@plasmastrapi/helpers": "^1.0.14",
     "@plasmastrapi/viewport": "^1.0.0"
   },
   "devDependencies": {}

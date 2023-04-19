@@ -1,4 +1,4 @@
 // <autogen>
-import { toNumber, pow2 } from './math';
-export { toNumber, pow2 };
+import { toNumber, pow2, clamp } from './math';
+export { toNumber, pow2, clamp };
 // </autogen>
