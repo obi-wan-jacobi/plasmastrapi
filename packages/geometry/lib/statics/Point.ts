@@ -14,7 +14,7 @@ export default abstract class Point {
     return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
   }
 
-  public static getAngleBetweenPoint(p1: IPoint, p2: IPoint): number {
+  public static getAngleBetweenPoints(p1: IPoint, p2: IPoint): number {
     return Math.atan2(p2.y - p1.y, p2.x - p1.x);
   }
 
