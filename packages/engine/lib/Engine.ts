@@ -24,8 +24,8 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
     systems.forEach((SystemCtor) => this.systems.add(SystemCtor));
   }
 
-  public load(src: string): TImageSource {
-    return this.viewport.load(src);
+  public load(src: string, key?: string): TImageSource {
+    return this.viewport.load(src, key);
   }
 
   public start(): void {

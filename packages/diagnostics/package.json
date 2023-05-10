@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/diagnostics",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,8 +8,10 @@
     "dist/**"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+    "lint": "eslint --fix",
+    "prettier-format": "prettier --config ./../../.prettierrc --ignore-path ./../../.prettierignore .//**/*.{ts,js,jsx,json} --write --no-error-on-unmatched-pattern",
+    "build": "rimraf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "obi-wan-jacobi",
   "license": "",
@@ -17,7 +19,7 @@
     "@plasmastrapi/ecs": "^1.0.20",
     "@plasmastrapi/engine": "^1.0.21",
     "@plasmastrapi/geometry": "^1.0.17",
-    "@plasmastrapi/viewport": "^1.0.0"
+    "@plasmastrapi/viewport": "^1.0.2"
   },
   "devDependencies": {}
 }

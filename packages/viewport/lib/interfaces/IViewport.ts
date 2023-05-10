@@ -6,7 +6,7 @@ import { IStyle } from './IStyle';
 export default interface IViewport<TImageSource> {
   width: number;
   height: number;
-  load(src: string): TImageSource;
+  load(src: string, key?: string): TImageSource;
   render(): void;
   drawImage({ pose, image }: { pose: IPose; image: IImage }): void;
   drawLabel({ pose, style, label }: { pose: IPose; style: IStyle; label: ILabel }): void;

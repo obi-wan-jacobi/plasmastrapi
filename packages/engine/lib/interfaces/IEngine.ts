@@ -7,7 +7,7 @@ export default interface IEngine<TImageSource> {
   systems: ISystemMaster;
   viewport: IViewport<TImageSource>;
 
-  load(src: string): TImageSource;
+  load(src: string, key?: string): TImageSource;
   once(): void;
   start(): void;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/geometry",
-  "version": "1.0.17",
+  "version": "1.0.19",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,8 +8,10 @@
     "dist/**"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+    "lint": "eslint --fix",
+    "prettier-format": "prettier --config ./../../.prettierrc --ignore-path ./../../.prettierignore .//**/*.{ts,js,jsx,json} --write --no-error-on-unmatched-pattern",
+    "build": "rimraf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "obi-wan-jacobi",
   "license": "",
@@ -24,6 +26,7 @@
     "@turf/center-of-mass": "^6.5.0",
     "@turf/difference": "^6.5.0",
     "@turf/helpers": "^6.5.0",
+    "@turf/intersect": "^6.5.0",
     "@turf/kinks": "^6.5.0",
     "@turf/line-intersect": "^6.5.0",
     "@turf/simplify": "^6.5.0",

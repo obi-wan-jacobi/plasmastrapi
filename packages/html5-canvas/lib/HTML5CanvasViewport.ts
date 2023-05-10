@@ -27,8 +27,8 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
     this.height = canvas.clientHeight;
   }
 
-  public load(src: string): CanvasImageSource {
-    return this.__imageBuffer.load(src);
+  public load(src: string, key?: string): CanvasImageSource {
+    return this.__imageBuffer.load(src, key);
   }
 
   public render(): void {
@@ -80,7 +80,7 @@ export default class HTML5CanvasViewport implements IViewport<CanvasImageSource>
 
   @Atomic
   private __drawImage({ pose, image }: { pose: IPose; image: IImage }): void {
-    const asset = this.load(image.src || './favicon.ico');
+    const asset = this.load(image.src || './favicon.ico', image.src);
     const x = pose.x + (image.offset?.x || 0);
     const y = pose.y + (image.offset?.y || 0);
     this.__ctx.translate(x, y);

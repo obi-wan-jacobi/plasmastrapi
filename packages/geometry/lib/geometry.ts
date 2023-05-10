@@ -19,6 +19,7 @@ export const booleanPointInPolygon = require('@turf/boolean-point-in-polygon').d
 export const booleanPointOnLine = require('@turf/boolean-point-on-line').default;
 export const centerOfMass = require('@turf/center-of-mass').default;
 export const lineIntersect = require('@turf/line-intersect').default;
+export const intersect = require('@turf/intersect').default;
 
 export const rotatePointAboutOrigin = ({ point, orientation }: { point: IPoint; orientation: number }): IPoint => {
   const s = Math.sin(orientation);
@@ -54,13 +55,12 @@ export const fromShapeToGeoJSON = (shape: IShape): geojson.Feature<geojson.Polyg
 export const fromGeoJSONCoordinatesToShapes = (
   geoJSON: geojson.Feature<geojson.Polygon | geojson.MultiPolygon, geojson.GeoJsonProperties>,
 ): IShape[] => {
-  if (!geoJSON) {
-    return [];
-  }
   if (geoJSON.geometry.type === 'Polygon') {
-    return geoJSON.geometry.coordinates.map((vertices: number[][]) => {
+    const shapes = geoJSON.geometry.coordinates.map((vertices: number[][]) => {
       return { vertices: vertices.map((vertex: number[]) => ({ x: vertex[0], y: vertex[1] })) };
     });
+    shapes.forEach((shape) => shape.vertices.pop());
+    return shapes;
   }
   if (geoJSON.geometry.type === 'MultiPolygon') {
     const shapes: IShape[] = [];
@@ -71,6 +71,7 @@ export const fromGeoJSONCoordinatesToShapes = (
         })[0],
       );
     });
+    shapes.forEach((shape) => shape.vertices.pop());
     return shapes;
   }
   return [];

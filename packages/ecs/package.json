@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/ecs",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,14 +8,16 @@
     "dist/**"
   ],
   "scripts": {
-    "test": "jest",
-    "build": "./node_modules/.bin/rimraf ./dist && tsc"
+    "lint": "eslint --fix",
+    "prettier-format": "prettier --config ./../../.prettierrc --ignore-path ./../../.prettierignore .//**/*.{ts,js,jsx,json} --write --no-error-on-unmatched-pattern",
+    "build": "rimraf ./dist && tsc",
+    "test": "jest"
   },
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
     "@plasmastrapi/base": "^1.0.27",
-    "@plasmastrapi/viewport": "^1.0.0",
+    "@plasmastrapi/viewport": "^1.0.2",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
