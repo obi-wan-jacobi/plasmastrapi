@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/geometry",
-  "version": "1.0.19",
+  "version": "1.0.21",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/math": "^1.0.2",
+    "@plasmastrapi/math": "^1.0.4",
     "@turf/area": "^6.5.0",
     "@turf/bbox": "^6.5.0",
     "@turf/boolean-contains": "^6.5.0",

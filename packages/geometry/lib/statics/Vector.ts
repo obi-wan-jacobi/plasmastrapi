@@ -1,14 +1,14 @@
 import { pow2 } from '@plasmastrapi/math';
-import { getDirectionVectorAB, getEuclideanDistanceBetweenPoints } from '../geometry';
 import { INormalizedVector } from '../interfaces/INormalizedVector';
 import { IPoint } from '../interfaces/IPoint';
 import { IVector } from '../interfaces/IVector';
+import Point from './Point';
 
 export abstract class Vector {
   public static normalizeFromPoints(p1: IPoint, p2: IPoint): INormalizedVector {
     return {
       direction: getDirectionVectorAB(p1, p2),
-      magnitude: getEuclideanDistanceBetweenPoints(p1, p2),
+      magnitude: Point.getEuclideanDistanceBetweenPoints(p1, p2),
     };
   }
 
@@ -50,7 +50,7 @@ export abstract class Vector {
   }
 
   public static magnitude(v: IVector): number {
-    return Math.sqrt(pow2(v.x) + pow2(v.y));
+    return Math.sqrt(v.x ** 2 + v.y ** 2);
   }
 
   public static subtractAfromB(a: INormalizedVector, b: INormalizedVector): INormalizedVector {
@@ -70,3 +70,15 @@ export abstract class Vector {
     return Vector.normalize({ x: proj * u.x, y: proj * u.y });
   }
 }
+
+const getDirectionVectorAB = (a: IPoint, b: IPoint): { x: number; y: number } => {
+  const v = {
+    x: b.x - a.x,
+    y: b.y - a.y,
+  };
+  const magnitude = Point.getEuclideanDistanceBetweenPoints(b, a);
+  return {
+    x: v.x / magnitude,
+    y: v.y / magnitude,
+  };
+};

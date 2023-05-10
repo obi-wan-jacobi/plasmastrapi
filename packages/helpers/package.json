@@ -16,10 +16,10 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.20",
-    "@plasmastrapi/geometry": "^1.0.17",
-    "@plasmastrapi/math": "^1.0.2",
-    "@plasmastrapi/physics": "^1.0.8"
+    "@plasmastrapi/ecs": "^1.0.21",
+    "@plasmastrapi/geometry": "^1.0.21",
+    "@plasmastrapi/math": "^1.0.4",
+    "@plasmastrapi/physics": "^1.0.9"
   },
   "devDependencies": {}
 }

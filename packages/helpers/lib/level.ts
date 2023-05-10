@@ -2,32 +2,20 @@ import { PoseComponent, ShapeComponent } from '@plasmastrapi/ecs';
 import {
   INormalizedVector,
   IPoint,
-  IShape,
   IVector,
+  Shape,
   Vector,
+  GeoJSON,
   booleanPointOnLine,
-  fromPointsToGeoJSON,
-  fromShapeToGeoJSON,
-  geojson,
-  getDirectionVectorAB,
-  lineIntersect,
-  transformShape,
+  Edge,
+  IShape,
 } from '@plasmastrapi/geometry';
 import { LevelComponent } from '@plasmastrapi/physics';
-
-type Edge = [IPoint, IPoint];
 
 export function getLevelShape(levelComponent: LevelComponent): IShape {
   const level = levelComponent.$entity;
   const levelPose = level.$copy(PoseComponent);
-  return transformShape(level.$copy(ShapeComponent), levelPose);
-}
-
-export function findLevelIntersectionsWithLine(
-  levelComponent: LevelComponent,
-  motionPath: geojson.Feature<geojson.LineString, geojson.GeoJsonProperties>,
-): any {
-  return lineIntersect(fromShapeToGeoJSON(getLevelShape(levelComponent)), motionPath);
+  return Shape.transform(level.$copy(ShapeComponent), levelPose);
 }
 
 export function getIntersectingEdgeOfLevel(levelComponent: LevelComponent, intersection: IPoint): Edge {
@@ -36,7 +24,7 @@ export function getIntersectingEdgeOfLevel(levelComponent: LevelComponent, inter
   for (let i = 0, L = vertices.length; i < L - 1; i++) {
     const v1 = vertices[i];
     const v2 = vertices[i + 1];
-    const edge = fromPointsToGeoJSON([v1, v2]);
+    const edge = GeoJSON.createFromPoints([v1, v2]);
     const { x, y } = intersection;
     if (booleanPointOnLine([x, y], edge, { epsilon: 0.1 })) {
       return [v1, v2];
@@ -45,7 +33,7 @@ export function getIntersectingEdgeOfLevel(levelComponent: LevelComponent, inter
   throw new Error(`Point (${intersection.x}, ${intersection.y}) does not lie on any edges in given ${LevelComponent.name}.`);
 }
 
-export function getResultantVelocityAfterCollision({
+export function levelGetResultantVelocityAfterCollision({
   levelComponent,
   pointOfCollision,
   velocityVector,
@@ -58,9 +46,8 @@ export function getResultantVelocityAfterCollision({
   cFriction: number;
   cRestitution: number;
 }): IVector {
-  const { x, y } = pointOfCollision;
-  const edge = getIntersectingEdgeOfLevel(levelComponent, { x, y });
-  const uEdgeVector = getDirectionVectorAB(edge[0], edge[1]);
+  const edge = getIntersectingEdgeOfLevel(levelComponent, pointOfCollision);
+  const uEdgeVector = Vector.normalizeFromPoints(edge[0], edge[1]).direction;
   const n = Vector.normalize({ x: uEdgeVector.y, y: -uEdgeVector.x });
   const u = Vector.projectAOntoB(velocityVector, n);
   const w = Vector.subtractAfromB(u, velocityVector);

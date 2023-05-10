@@ -1,4 +1,14 @@
 // <autogen>
+import Epsilon from './statics/Epsilon';
+import GBOX from './statics/GBOX';
+import GeoJSON from './statics/GeoJSON';
+import IEdgesIntersection from './interfaces/IEdgesIntersection';
+import IFindEdgesIntersectionOptions from './interfaces/IFindEdgesIntersectionOptions';
+import IGBOX from './interfaces/IGBOX';
+import Point from './statics/Point';
+import Rectangle from './statics/Rectangle';
+import Shape, { Edge } from './statics/Shape';
+import { EDGE_TYPE } from './enums/EDGE_TYPE';
 import { ILine } from './interfaces/ILine';
 import { INormalizedVector } from './interfaces/INormalizedVector';
 import { IPoint } from './interfaces/IPoint';
@@ -14,16 +24,6 @@ import {
   centerOfMass,
   lineIntersect,
   intersect,
-  rotatePointAboutOrigin,
-  transformShape,
-  fromPointsToGeoJSON,
-  fromShapeToGeoJSON,
-  fromGeoJSONCoordinatesToShapes,
-  IBoundary,
-  fromShapeToBoundary,
-  getEuclideanDistanceBetweenPoints,
-  getAngleBetweenPoints,
-  getDirectionVectorAB,
   turf,
   geojson,
   area,
@@ -32,14 +32,25 @@ import {
   kinks,
   simplify,
   unkinkPolygon,
-} from './geometry';
+} from './turf';
 export {
+  EDGE_TYPE,
+  IEdgesIntersection,
+  IFindEdgesIntersectionOptions,
+  IGBOX,
   ILine,
   INormalizedVector,
   IPoint,
   IPose,
   IShape,
   IVector,
+  Epsilon,
+  GBOX,
+  GeoJSON,
+  Point,
+  Rectangle,
+  Shape,
+  Edge,
   Vector,
   booleanContains,
   booleanOverlap,
@@ -48,16 +59,6 @@ export {
   centerOfMass,
   lineIntersect,
   intersect,
-  rotatePointAboutOrigin,
-  transformShape,
-  fromPointsToGeoJSON,
-  fromShapeToGeoJSON,
-  fromGeoJSONCoordinatesToShapes,
-  IBoundary,
-  fromShapeToBoundary,
-  getEuclideanDistanceBetweenPoints,
-  getAngleBetweenPoints,
-  getDirectionVectorAB,
   turf,
   geojson,
   area,

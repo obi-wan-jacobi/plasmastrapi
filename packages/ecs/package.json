@@ -16,8 +16,8 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.27",
-    "@plasmastrapi/viewport": "^1.0.2",
+    "@plasmastrapi/base": "^1.0.29",
+    "@plasmastrapi/viewport": "^1.0.3",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

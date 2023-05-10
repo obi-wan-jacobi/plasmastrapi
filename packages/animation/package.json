@@ -16,12 +16,12 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.27",
-    "@plasmastrapi/ecs": "^1.0.20",
-    "@plasmastrapi/engine": "^1.0.21",
-    "@plasmastrapi/geometry": "^1.0.17",
-    "@plasmastrapi/helpers": "^1.0.14",
-    "@plasmastrapi/viewport": "^1.0.2"
+    "@plasmastrapi/base": "^1.0.29",
+    "@plasmastrapi/ecs": "^1.0.21",
+    "@plasmastrapi/engine": "^1.0.23",
+    "@plasmastrapi/geometry": "^1.0.21",
+    "@plasmastrapi/helpers": "^1.0.15",
+    "@plasmastrapi/viewport": "^1.0.3"
   },
   "devDependencies": {}
 }

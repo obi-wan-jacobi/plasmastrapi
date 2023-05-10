@@ -1,28 +1,14 @@
 // <autogen>
-import {
-  entityContainsPoint,
-  entitiesTouch,
-  entityContainsEntity,
-  entityTouchesLine,
-  addWidthAndHeightAsShapeComponent,
-  getAbsolutePose,
-} from './entities';
-import {
-  getLevelShape,
-  findLevelIntersectionsWithLine,
-  getIntersectingEdgeOfLevel,
-  getResultantVelocityAfterCollision,
-} from './level';
+import { entityContainsPoint, entitiesTouch, entityContainsEntity, entityTouchesLine, entityGetAbsolutePose } from './entities';
+import { getLevelShape, getIntersectingEdgeOfLevel, levelGetResultantVelocityAfterCollision } from './level';
 export {
   entityContainsPoint,
   entitiesTouch,
   entityContainsEntity,
   entityTouchesLine,
-  addWidthAndHeightAsShapeComponent,
-  getAbsolutePose,
+  entityGetAbsolutePose,
   getLevelShape,
-  findLevelIntersectionsWithLine,
   getIntersectingEdgeOfLevel,
-  getResultantVelocityAfterCollision,
+  levelGetResultantVelocityAfterCollision,
 };
 // </autogen>
