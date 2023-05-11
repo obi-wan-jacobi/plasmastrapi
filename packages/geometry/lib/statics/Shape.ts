@@ -28,7 +28,7 @@ export default abstract class Shape {
   ): IShape[] {
     if (geoJSON.geometry.type === 'Polygon') {
       const shapes = geoJSON.geometry.coordinates.map((vertices: number[][]) => {
-        return { vertices: vertices.map((vertex: number[]) => ({ x: vertex[0], y: vertex[1] })).slice(0, -2) };
+        return { vertices: vertices.map((vertex: number[]) => ({ x: vertex[0], y: vertex[1] })) };
       });
       return shapes;
     }
@@ -37,7 +37,7 @@ export default abstract class Shape {
       geoJSON.geometry.coordinates.forEach((polygon) => {
         shapes.push(
           polygon.map((vertices: number[][]) => {
-            return { vertices: vertices.map((vertex: number[]) => ({ x: vertex[0], y: vertex[1] })).slice(0, -2) };
+            return { vertices: vertices.map((vertex: number[]) => ({ x: vertex[0], y: vertex[1] })) };
           })[0],
         );
       });
