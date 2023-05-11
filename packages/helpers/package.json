@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/helpers",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,6 +20,5 @@
     "@plasmastrapi/geometry": "^1.0.21",
     "@plasmastrapi/math": "^1.0.4",
     "@plasmastrapi/physics": "^1.0.9"
-  },
-  "devDependencies": {}
+  }
 }

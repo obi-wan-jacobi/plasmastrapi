@@ -1,19 +1,17 @@
 {
   "name": "plasmastrapi",
   "workspaces": [
+    "packages/animation",
     "packages/base",
     "packages/diagnostics",
     "packages/ecs",
     "packages/engine",
     "packages/geometry",
     "packages/helpers",
-    "packages/physics",
-    "packages/presentation",
     "packages/html5-canvas",
-    "packages/viewport",
-    "packages/viewport",
-    "packages/helpers",
-    "packages/config"
+    "packages/math",
+    "packages/physics",
+    "packages/viewport"
   ],
   "version": "1.0.0",
   "description": "",

@@ -1,4 +1,3 @@
-import { pow2 } from '@plasmastrapi/math';
 import { INormalizedVector } from '../interfaces/INormalizedVector';
 import { IPoint } from '../interfaces/IPoint';
 import { IVector } from '../interfaces/IVector';

@@ -1,6 +1,5 @@
 import { IComponentMaster, IEntity, PoseComponent, System } from '@plasmastrapi/ecs';
 import VelocityComponent from '../components/VelocityComponent';
-import { entitiesTouch } from '@plasmastrapi/helpers';
 
 export default class CollisionSystem extends System {
   public once({ components, delta }: { components: IComponentMaster; delta: number }): void {
@@ -23,43 +22,43 @@ export default class CollisionSystem extends System {
   }
 }
 
-function rollBackEntityPoses(entityA: IEntity, entityB: IEntity, delta: number) {
-  rollBackEntityPose(entityA, delta);
-  rollBackEntityPose(entityB, delta);
-  if (entitiesTouch(entityA, entityB)) {
-    rollBackEntityPoses(entityA, entityB, delta);
-  }
-}
+// function rollBackEntityPoses(entityA: IEntity, entityB: IEntity, delta: number) {
+//   rollBackEntityPose(entityA, delta);
+//   rollBackEntityPose(entityB, delta);
+//   if (entitiesTouch(entityA, entityB)) {
+//     rollBackEntityPoses(entityA, entityB, delta);
+//   }
+// }
 
-function rollBackEntityPose(entity: IEntity, delta: number) {
-  return rollEntityPose(entity, delta, -1);
-}
+// function rollBackEntityPose(entity: IEntity, delta: number) {
+//   return rollEntityPose(entity, delta, -1);
+// }
 
-function rollForwardEntityPose(entity: IEntity, delta: number) {
-  return rollEntityPose(entity, delta, 1);
-}
+// function rollForwardEntityPose(entity: IEntity, delta: number) {
+//   return rollEntityPose(entity, delta, 1);
+// }
 
-function rollEntityPose(entity: IEntity, delta: number, sign: 1 | -1) {
-  let pose = entity.$copy(PoseComponent);
-  const velocity = entity.$copy(VelocityComponent) || { x: 0, y: 0, w: 0 };
-  pose = {
-    x: pose.x + sign * velocity.x * delta,
-    y: pose.y + sign * velocity.y * delta,
-    a: pose.a + sign * velocity.w * delta,
-  };
-  entity.$patch(PoseComponent, pose);
-}
+// function rollEntityPose(entity: IEntity, delta: number, sign: 1 | -1) {
+//   let pose = entity.$copy(PoseComponent);
+//   const velocity = entity.$copy(VelocityComponent) || { x: 0, y: 0, w: 0 };
+//   pose = {
+//     x: pose.x + sign * velocity.x * delta,
+//     y: pose.y + sign * velocity.y * delta,
+//     a: pose.a + sign * velocity.w * delta,
+//   };
+//   entity.$patch(PoseComponent, pose);
+// }
 
-function rollBackParents(entity: IEntity) {
-  let target: IEntity | undefined = entity;
-  while (!!target && target.$copy(PoseComponent) && target.$parent) {
-    const childPose = target.$copy(PoseComponent);
-    const childRelativePose = target.$copy(PoseComponent);
-    target.$parent.$patch(PoseComponent, {
-      x: childPose.x - childRelativePose.x,
-      y: childPose.y - childRelativePose.y,
-      a: childPose.a - childRelativePose.a,
-    });
-    target = target.$parent;
-  }
-}
+// function rollBackParents(entity: IEntity) {
+//   let target: IEntity | undefined = entity;
+//   while (!!target && target.$copy(PoseComponent) && target.$parent) {
+//     const childPose = target.$copy(PoseComponent);
+//     const childRelativePose = target.$copy(PoseComponent);
+//     target.$parent.$patch(PoseComponent, {
+//       x: childPose.x - childRelativePose.x,
+//       y: childPose.y - childRelativePose.y,
+//       a: childPose.a - childRelativePose.a,
+//     });
+//     target = target.$parent;
+//   }
+// }
