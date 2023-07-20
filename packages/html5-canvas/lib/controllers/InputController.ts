@@ -35,7 +35,7 @@ export default class InputController implements IController {
 
   public setHandler<TArgs>(Handler: Constructor<IInputHandler, TArgs>, args?: TArgs): void {
     this.__handler?.dispose();
-    this.__handler = new Handler(args!);
+    this.__handler = new Handler(args || ({} as TArgs));
     this.__handler.init({ x: this.__mouse.x, y: this.__mouse.y, ...args });
   }
 

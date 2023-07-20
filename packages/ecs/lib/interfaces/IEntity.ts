@@ -1,4 +1,4 @@
-import { IDictionary, IUnique, Void, Volatile } from '@plasmastrapi/base';
+import { DeepPartial, IDictionary, IUnique, Void, Volatile } from '@plasmastrapi/base';
 import IComponent from './IComponent';
 import { Ctor } from '..';
 
@@ -13,7 +13,7 @@ export default interface IEntity extends IUnique {
   $has(ComponentClass: Ctor<IComponent<any>, any> | Ctor<IComponent<any>, any>[]): boolean;
   $copy<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): TArg;
   $mutate<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg): this;
-  $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg | {}): this;
+  $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: DeepPartial<TArg>): this;
   $get<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): IComponent<TArg>;
   $forEach(fn: Void<IComponent<any>>): void;
 }

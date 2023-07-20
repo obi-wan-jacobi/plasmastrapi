@@ -1,5 +1,5 @@
 import lodash from 'lodash';
-import { clone, Index, Unique } from '@plasmastrapi/base';
+import { clone, DeepPartial, Index, Unique } from '@plasmastrapi/base';
 import IEntity from '../interfaces/IEntity';
 import IComponent from '../interfaces/IComponent';
 
@@ -25,18 +25,18 @@ export default abstract class Component<T extends {}> extends Unique implements 
     this.__data = clone(data) as T;
   }
 
-  public patch(data: T | {}): void {
+  public patch(data: DeepPartial<T>): void {
     this.mutate(mergeWithIncludingUndefined(this.copy(), data));
   }
 }
 
-function mergeWithIncludingUndefined<T extends {}>(src: T, data: T | {}): T {
+function mergeWithIncludingUndefined<T extends {}>(src: T, data: DeepPartial<T>): T {
   // https://stackoverflow.com/questions/66247060/how-to-merge-objects-with-lodash-but-replace-arrays-values
   const result = lodash.mergeWith(src, data, (a, b) => (lodash.isArray(b) ? b : undefined));
   return persistUndefinedValues(result, data);
 }
 
-function persistUndefinedValues<T extends {}>(src: T, data: T | {}): T {
+function persistUndefinedValues<T extends {}>(src: T, data: DeepPartial<T>): T {
   for (const key of Object.keys(data)) {
     if ((data as Index<any>)[key] === undefined) {
       (src as Index<any>)[key] = undefined;

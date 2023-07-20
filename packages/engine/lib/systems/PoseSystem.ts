@@ -5,6 +5,18 @@ import { COLOUR } from '../enums/COLOUR';
 import { entityGetAbsolutePose } from '@plasmastrapi/helpers';
 
 export default class PoseSystem extends RenderingSystem {
+  public once({ components }: { viewport: IViewport<any>; components: IComponentMaster }): void {
+    components.forEvery(PoseComponent)((pose) => {
+      const entity = pose.$entity;
+      const p = pose.copy();
+      entity.$patch(PoseComponent, {
+        $: {
+          previous: { x: p.x, y: p.y, a: p.a },
+        },
+      });
+    });
+  }
+
   public draw({ viewport, components }: { viewport: IViewport<any>; components: IComponentMaster }): void {
     components.forEvery(PoseComponent)((pose) => {
       const { x, y } = entityGetAbsolutePose(pose.$entity as IEntity);

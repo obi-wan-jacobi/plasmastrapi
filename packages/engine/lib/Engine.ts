@@ -9,14 +9,16 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
   public systems: ISystemMaster;
   public viewport: IViewport<TImageSource>;
 
+  private __options?: { fps: number };
   private __t: Date;
   private __delta: number;
 
-  constructor({ viewport, systems }: { viewport: IViewport<TImageSource>; systems: Stor[] }) {
+  constructor({ viewport, systems, options }: { viewport: IViewport<TImageSource>; systems: Stor[]; options?: { fps: number } }) {
     this.entities = ENTITIES;
     this.components = COMPONENTS;
     this.systems = SYSTEMS;
     this.viewport = viewport;
+    this.__options = options;
     this.__initSystems(systems);
   }
 
@@ -29,7 +31,8 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
   }
 
   public start(): void {
-    setInterval(this.once.bind(this), 1000 / 100);
+    const fps = this.__options?.fps || 60;
+    setInterval(this.once.bind(this), 1000 / fps);
   }
 
   public once(): void {

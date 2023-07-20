@@ -1,4 +1,4 @@
-import { Dictionary, IDictionary, Unique, Void, Volatile } from '@plasmastrapi/base';
+import { DeepPartial, Dictionary, IDictionary, Unique, Void, Volatile } from '@plasmastrapi/base';
 import { Ctor } from '..';
 import hereditary from '../decorators/hereditary';
 import IComponent from '../interfaces/IComponent';
@@ -92,7 +92,7 @@ export default abstract class Entity extends Unique implements IEntity {
     return this;
   }
 
-  public $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: TArg | {}): this {
+  public $patch<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>, data: DeepPartial<TArg>): this {
     const component = this.__throwIfMissingComponent(ComponentClass, this.$patch.name);
     component.patch(data);
     return this;

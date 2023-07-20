@@ -2,7 +2,7 @@ import Entity from '../abstracts/Entity';
 import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import IEntityMaster from '../interfaces/IEntityMaster';
 import IEntity from '../interfaces/IEntity';
-import { EntityClass } from '..';
+import { Etor } from '..';
 import { IOC } from './IOC';
 
 class EntityMaster implements IEntityMaster {
@@ -22,22 +22,22 @@ class EntityMaster implements IEntityMaster {
     };
   }
 
-  public count<T extends IEntity>(EntityCls: EntityClass<T>): number {
-    const collection = this.__entityMap.read(EntityCls.name);
+  public count<T extends IEntity>(EntityClass: Etor<T>): number {
+    const collection = this.__entityMap.read(EntityClass.name);
     return collection ? collection.length : 0;
   }
 
-  public forEvery<T extends IEntity>(EntityCls: EntityClass<T>): Void<Void<T>> {
-    const collection = this.__entityMap.read(EntityCls.name);
+  public forEvery<T extends IEntity>(EntityClass: Etor<T>): Void<Void<T>> {
+    const collection = this.__entityMap.read(EntityClass.name);
     return collection ? collection.forEach.bind(collection) : (): void => undefined;
   }
 
-  public find<T extends IEntity>(EntityCls: EntityClass<T>): (fn: (entity: T) => boolean) => Volatile<T> {
+  public find<T extends IEntity>(EntityClass: Etor<T>): (fn: (entity: T) => boolean) => Volatile<T> {
     return (fn: (entity: T) => boolean): Volatile<T> => {
-      if (!this.__entityMap.read(EntityCls.name)) {
+      if (!this.__entityMap.read(EntityClass.name)) {
         return undefined;
       }
-      const result = this.__entityMap.read(EntityCls.name)!.find(fn);
+      const result = this.__entityMap.read(EntityClass.name)!.find(fn);
       if (result) {
         return result as T;
       }
@@ -45,12 +45,12 @@ class EntityMaster implements IEntityMaster {
     };
   }
 
-  public first<T extends IEntity>(EntityCls: EntityClass<T>): Volatile<T> {
-    return this.__entityMap.read(EntityCls.name)?.first() as Volatile<T>;
+  public first<T extends IEntity>(EntityClass: Etor<T>): Volatile<T> {
+    return this.__entityMap.read(EntityClass.name)?.first() as Volatile<T>;
   }
 
-  public last<T extends IEntity>(EntityCls: EntityClass<T>): Volatile<T> {
-    return this.__entityMap.read(EntityCls.name)?.last() as Volatile<T>;
+  public last<T extends IEntity>(EntityClass: Etor<T>): Volatile<T> {
+    return this.__entityMap.read(EntityClass.name)?.last() as Volatile<T>;
   }
 
   public upkeep(): void {

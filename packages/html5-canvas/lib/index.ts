@@ -11,12 +11,14 @@ import IKeyboardEvent from './interfaces/IKeyboardEvent';
 import IMouseEvent from './interfaces/IMouseEvent';
 import InputController from './controllers/InputController';
 import InputHandler from './abstracts/InputHandler';
+import PixelCache from './cache/HTML5PixelCache';
 import { KEYBOARD_EVENT } from './enums/KEYBOARD_EVENT';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
 import { observable } from './decorators/observable';
 export {
   InputHandler,
   HTML5ImageCache,
+  PixelCache,
   InputController,
   observable,
   KEYBOARD_EVENT,

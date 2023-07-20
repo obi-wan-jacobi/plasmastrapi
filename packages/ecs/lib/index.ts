@@ -10,6 +10,8 @@ import ISystemMaster from './interfaces/ISystemMaster';
 import ImageComponent from './components/ImageComponent';
 import LabelComponent from './components/LabelComponent';
 import LineComponent from './components/LineComponent';
+import PixelComponent from './components/PixelComponent';
+import PixelMapComponent from './components/PixelMapComponent';
 import PoseComponent from './components/PoseComponent';
 import ShapeComponent from './components/ShapeComponent';
 import StyleComponent from './components/StyleComponent';
@@ -26,6 +28,8 @@ export {
   ImageComponent,
   LabelComponent,
   LineComponent,
+  PixelComponent,
+  PixelMapComponent,
   PoseComponent,
   ShapeComponent,
   StyleComponent,
@@ -42,11 +46,7 @@ export {
   SYSTEMS,
 };
 // </autogen>
-import { ABC, Constructor, Tuple } from '@plasmastrapi/base';
-export type Etor<T extends IEntity, TArg> = Constructor<T, TArg>;
-export type EntityClass<T extends IEntity> = ABC<T>;
+import { ABC, Constructor } from '@plasmastrapi/base';
+export type Etor<T extends IEntity, TArg = {}> = Constructor<T, TArg> | ABC<T>;
 export type Ctor<T extends IComponent<TArg>, TArg extends {}> = Constructor<T, { data: TArg; entity: IEntity }>;
-export type ComponentClass<T extends IComponent<TArg>, TArg extends {}> = ABC<T>;
 export type Stor = Constructor<ISystem, void>;
-export type SystemClass<T extends ISystem> = ABC<T>;
-export type ComponentTuple<T extends {}> = Tuple<Ctor<IComponent<T>, T>, T>;

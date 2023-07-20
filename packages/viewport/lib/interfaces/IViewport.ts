@@ -13,4 +13,6 @@ export default interface IViewport<TImageSource> {
   drawShape({ path, style }: { path: IPoint[]; style: IStyle }): void;
   drawLine({ path, style }: { path: IPoint[]; style: IStyle }): void;
   drawCircle({ position, radius, style }: { position: IPoint; radius: number; style: IStyle }): void;
+  drawPixel(payload: { position: IPoint; style: IStyle }): void;
+  drawPixelMap(payload: { cacheKey: string; position: IPoint; pixels: string[]; scalingFactor: number; isDirty: boolean }): void;
 }

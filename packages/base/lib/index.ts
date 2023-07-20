@@ -18,3 +18,8 @@ export type Fn<TArg, TResult> = ({}: TArg) => TResult;
 export type Void<T> = Fn<T, void>;
 export type Constructor<TClass, TArg> = new ({}: TArg) => TClass;
 export type Tuple<T1, T2> = [T1, T2];
+export type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;

@@ -9,14 +9,7 @@ export default class VelocitySystem extends System {
       const entity = velocityComponent.$entity;
       const pose = entity.$copy(PoseComponent);
       const { x, y, a } = getNextPose({ pose, velocity, dt: delta });
-      entity.$mutate(PoseComponent, {
-        x,
-        y,
-        a,
-        $: {
-          previous: { x: pose.x, y: pose.y, a: pose.a },
-        },
-      });
+      entity.$patch(PoseComponent, { x, y, a });
     });
   }
 }

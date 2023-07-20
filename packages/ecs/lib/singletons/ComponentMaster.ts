@@ -1,5 +1,5 @@
 import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
-import { ComponentClass } from '..';
+import { Ctor } from '..';
 import IComponent from '../interfaces/IComponent';
 import IComponentMaster from '../interfaces/IComponentMaster';
 import { IOC } from './IOC';
@@ -19,21 +19,21 @@ class ComponentMaster implements IComponentMaster {
     };
   }
 
-  public count<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): number {
-    const collection = this.__componentMap.read(ComponentCls.name);
+  public count<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): number {
+    const collection = this.__componentMap.read(ComponentClass.name);
     return collection ? collection.length : 0;
   }
 
-  public forEvery<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): Void<Void<T>> {
-    const collection = this.__componentMap.read(ComponentCls.name);
+  public forEvery<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): Void<Void<T>> {
+    const collection = this.__componentMap.read(ComponentClass.name);
     return collection ? collection.forEach.bind(collection) : () => undefined;
   }
 
   public find<T extends IComponent<TArg>, TArg extends {}>(
-    ComponentCls: ComponentClass<T, TArg>,
+    ComponentClass: Ctor<T, TArg>,
   ): (fn: (component: T) => boolean) => Volatile<T> {
     return (fn: (component: T) => boolean): Volatile<T> => {
-      const result = this.__componentMap.read(ComponentCls.name)!.find(fn);
+      const result = this.__componentMap.read(ComponentClass.name)!.find(fn);
       if (result) {
         return result as T;
       }
@@ -46,8 +46,8 @@ class ComponentMaster implements IComponentMaster {
     this.__doPurgation();
   }
 
-  public toArray<T extends IComponent<TArg>, TArg extends {}>(ComponentCls: ComponentClass<T, TArg>): IComponent<TArg>[] {
-    return this.__componentMap.read(ComponentCls.name) ? this.__componentMap.read(ComponentCls.name)!.toArray() : [];
+  public toArray<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): IComponent<TArg>[] {
+    return this.__componentMap.read(ComponentClass.name) ? this.__componentMap.read(ComponentClass.name)!.toArray() : [];
   }
 
   private __doRegistrations(): void {
