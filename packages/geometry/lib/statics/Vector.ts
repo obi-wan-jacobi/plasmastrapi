@@ -68,6 +68,30 @@ export abstract class Vector {
     const proj = Vector.dotProduct(a, b) / m;
     return Vector.normalize({ x: proj * u.x, y: proj * u.y });
   }
+
+  public static add(v1: INormalizedVector, v2: INormalizedVector): INormalizedVector {
+    const x = v1.direction.x * v1.magnitude + v2.direction.x * v2.magnitude;
+    const y = v1.direction.y * v1.magnitude + v2.direction.y * v2.magnitude;
+    const magnitude = Vector.magnitude({ x, y });
+    if (magnitude === 0) {
+      return { direction: { x: 0, y: 0 }, magnitude: 0 };
+    }
+    return {
+      direction: {
+        x: x / magnitude,
+        y: y / magnitude,
+      },
+      magnitude,
+    };
+  }
+
+  public static perpendicular(v: INormalizedVector): INormalizedVector {
+    return { direction: { x: -v.direction.y, y: v.direction.x }, magnitude: v.magnitude };
+  }
+
+  public static reverse(v: INormalizedVector): INormalizedVector {
+    return { direction: { x: -v.direction.x, y: -v.direction.y }, magnitude: v.magnitude };
+  }
 }
 
 const getDirectionVectorAB = (a: IPoint, b: IPoint): { x: number; y: number } => {
