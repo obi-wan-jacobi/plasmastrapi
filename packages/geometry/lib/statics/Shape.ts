@@ -46,6 +46,14 @@ export default abstract class Shape {
     return [];
   }
 
+  public static createFromEdges(edges: Edge[]): IShape {
+    const vertices: IPoint[] = [];
+    for (const edge of edges) {
+      vertices.push(edge[0]);
+    }
+    return { vertices };
+  }
+
   public static toEdges(shape: IShape): Edge[] {
     const L = shape.vertices.length;
     return shape.vertices.map((v: IPoint, i: number) => [v, shape.vertices[(i + 1) % L]]);
