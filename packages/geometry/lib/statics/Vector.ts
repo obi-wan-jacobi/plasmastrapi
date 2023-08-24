@@ -92,6 +92,21 @@ export abstract class Vector {
   public static reverse(v: INormalizedVector): INormalizedVector {
     return { direction: { x: -v.direction.x, y: -v.direction.y }, magnitude: v.magnitude };
   }
+
+  public static crossProduct(a: INormalizedVector, b: INormalizedVector): number {
+    const v1 = Vector.expand(a);
+    const v2 = Vector.expand(b);
+    return v1.x * v2.y - v1.y * v2.x;
+  }
+
+  public static orientation(p: IPoint, q: IPoint, r: IPoint, epsilon = 0.000001): number {
+    const a = { x: q.x - p.x, y: q.y - p.y };
+    const b = { x: r.x - p.x, y: r.y - p.y };
+    const val = a.x * b.y - a.y * b.x;
+    if (Math.abs(val) <= epsilon) return 0;
+    // reverse the sign because we're upside-down (assume html-canvas...)
+    return val > 0 ? -1 : 1;
+  }
 }
 
 const getDirectionVectorAB = (a: IPoint, b: IPoint): { x: number; y: number } => {
