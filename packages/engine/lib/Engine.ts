@@ -9,8 +9,9 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
   public systems: ISystemMaster;
   public viewport: IViewport<TImageSource>;
 
+  private __interval?: NodeJS.Timer;
   private __options?: { fps: number };
-  private __t: Date;
+  private __t?: Date;
   private __delta: number;
 
   constructor({ viewport, systems, options }: { viewport: IViewport<TImageSource>; systems: Stor[]; options?: { fps: number } }) {
@@ -32,7 +33,12 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
 
   public start(): void {
     const fps = this.__options?.fps || 60;
-    setInterval(this.once.bind(this), 1000 / fps);
+    this.__interval = setInterval(this.once.bind(this), 1000 / fps);
+  }
+
+  public stop(): void {
+    clearInterval(this.__interval);
+    this.__t = undefined;
   }
 
   public once(): void {
