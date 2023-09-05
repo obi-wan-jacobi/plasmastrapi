@@ -85,6 +85,7 @@ export abstract class Vector {
     };
   }
 
+  // rotate v clockwise by 90 degrees
   public static perpendicular(v: INormalizedVector): INormalizedVector {
     return { direction: { x: -v.direction.y, y: v.direction.x }, magnitude: v.magnitude };
   }

@@ -6,14 +6,14 @@ export default abstract class RenderingSystem extends System {
     entities: IEntityMaster;
     components: IComponentMaster;
     systems: ISystemMaster;
-    delta: number;
+    deltaTime: number;
     viewport: IViewport<any>;
   }): void {}
   public abstract draw({}: {
     entities: IEntityMaster;
     components: IComponentMaster;
     systems: ISystemMaster;
-    delta: number;
+    deltaTime: number;
     viewport: IViewport<any>;
   }): void;
 }

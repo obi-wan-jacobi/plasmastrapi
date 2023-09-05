@@ -7,7 +7,15 @@ export default class FPSSystem extends RenderingSystem {
   private __nodeCount = 0;
   private __printCounter = 0;
 
-  public draw({ viewport, components, delta }: { viewport: IViewport<any>; components: IComponentMaster; delta: number }): void {
+  public draw({
+    viewport,
+    components,
+    deltaTime,
+  }: {
+    viewport: IViewport<any>;
+    components: IComponentMaster;
+    deltaTime: number;
+  }): void {
     let nodes = 0;
     this.__printCounter++;
     if (this.__printCounter === 30) {
@@ -16,7 +24,7 @@ export default class FPSSystem extends RenderingSystem {
         nodes += shape.vertices.length;
       });
       this.__printCounter = 0;
-      this.__printValue = `${Math.round(1000 / delta)}`;
+      this.__printValue = `${Math.round(1 / deltaTime)}`;
       this.__nodeCount = nodes;
     }
     viewport.drawLabel({

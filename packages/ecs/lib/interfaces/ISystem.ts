@@ -8,7 +8,7 @@ export default interface ISystem {
     entities: IEntityMaster;
     components: IComponentMaster;
     systems: ISystemMaster;
-    delta: number;
+    deltaTime: number;
     viewport: IViewport<any>;
   }): void;
 }

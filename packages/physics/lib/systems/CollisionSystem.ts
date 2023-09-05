@@ -2,7 +2,7 @@ import { IComponentMaster, IEntity, PoseComponent, System } from '@plasmastrapi/
 import VelocityComponent from '../components/VelocityComponent';
 
 export default class CollisionSystem extends System {
-  public once({ components, delta }: { components: IComponentMaster; delta: number }): void {
+  public once({ components, deltaTime }: { components: IComponentMaster; deltaTime: number }): void {
     // const rigidBodies = components.toArray(RigidBodyComponent);
     // if (rigidBodies.length < 2) {
     //   return;

@@ -9,7 +9,7 @@ export default abstract class System implements ISystem {
     entities: IEntityMaster;
     components: IComponentMaster;
     systems: ISystemMaster;
-    delta: number;
+    deltaTime: number;
     viewport: IViewport<any>;
   }): void;
 }

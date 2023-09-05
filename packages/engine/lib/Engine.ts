@@ -12,7 +12,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
   private __interval?: NodeJS.Timer;
   private __options?: { fps: number };
   private __t?: Date;
-  private __delta: number;
+  private __deltaTime: number;
 
   constructor({ viewport, systems, options }: { viewport: IViewport<TImageSource>; systems: Stor[]; options?: { fps: number } }) {
     this.entities = ENTITIES;
@@ -50,7 +50,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
 
   private __doDelta(): void {
     const now = new Date();
-    this.__delta = now.getTime() - (this.__t || now).getTime();
+    this.__deltaTime = (now.getTime() - (this.__t || now).getTime()) / 1000;
     this.__t = now;
   }
 
@@ -65,7 +65,7 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
         entities: this.entities,
         components: this.components,
         systems: this.systems,
-        delta: this.__delta,
+        deltaTime: this.__getDeltaTime(),
         viewport: this.viewport,
       }),
     );
@@ -78,11 +78,15 @@ export default class Engine<TImageSource> implements IEngine<TImageSource> {
           entities: this.entities,
           components: this.components,
           systems: this.systems,
-          delta: this.__delta,
+          deltaTime: this.__getDeltaTime(),
           viewport: this.viewport,
         });
       }
     });
     this.viewport.render();
+  }
+
+  private __getDeltaTime(): number {
+    return this.__deltaTime > 0.016 ? 0.016 : this.__deltaTime;
   }
 }
