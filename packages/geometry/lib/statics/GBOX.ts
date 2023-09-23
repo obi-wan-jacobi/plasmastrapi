@@ -32,6 +32,7 @@ export default abstract class GBOX {
       v4: { x: minX - epsilon, y: maxY + epsilon },
     };
   }
+
   public static combine(g1: IGBOX, g2: IGBOX): IGBOX {
     const minX = Math.min(g1.v1.x, g2.v1.x);
     const minY = Math.min(g1.v1.y, g2.v1.y);
