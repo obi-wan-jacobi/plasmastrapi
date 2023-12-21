@@ -1,7 +1,7 @@
-import { IPoint } from '@plasmastrapi/geometry';
+import IRenderingPoint from './IRenderingPoint';
 
 export default interface IPixelMap {
-  position: IPoint;
+  position: IRenderingPoint;
   pixels: string[];
   scalingFactor: number;
   isDirty: boolean;

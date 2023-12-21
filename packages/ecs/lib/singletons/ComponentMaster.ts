@@ -2,21 +2,19 @@ import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import { Ctor } from '..';
 import IComponent from '../interfaces/IComponent';
 import IComponentMaster from '../interfaces/IComponentMaster';
-import { IOC } from './IOC';
 
 class ComponentMaster implements IComponentMaster {
   private __componentMap: IDictionary<IDictionary<IComponent<any>>> = new Dictionary();
   private __registerTargets: IComponent<any>[] = [];
   private __purgeTargets: IComponent<any>[] = [];
 
-  public constructor() {
-    IOC.components = {
-      register: (instance: IComponent<any>) => {
-        this.__registerTargets.push(instance);
-        return instance;
-      },
-      purge: (instance: IComponent<any>) => this.__purgeTargets.push(instance),
-    };
+  public register(instance: IComponent<any>) {
+    this.__registerTargets.push(instance);
+    return instance;
+  }
+
+  public purge(instance: IComponent<any>) {
+    this.__purgeTargets.push(instance);
   }
 
   public count<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): number {
@@ -43,7 +41,7 @@ class ComponentMaster implements IComponentMaster {
 
   public upkeep(): void {
     this.__doRegistrations();
-    this.__doPurgation();
+    this.__doPurges();
   }
 
   public toArray<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): IComponent<TArg>[] {
@@ -65,7 +63,7 @@ class ComponentMaster implements IComponentMaster {
     }
   }
 
-  private __doPurgation(): void {
+  private __doPurges(): void {
     while (this.__purgeTargets.length) {
       const target = this.__purgeTargets.shift()!;
       this.__componentMap.read(target.constructor.name)!.delete(target.$id);

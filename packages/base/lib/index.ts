@@ -7,8 +7,8 @@ import Unique from './abstracts/Unique';
 import clone from './helpers/clone';
 import isNullOrUndefined from './helpers/isNullOrUndefined';
 import rotateArray from './helpers/rotateArray';
-import { isShallowEqual } from './helpers/isShallowEqual';
-export { Unique, Dictionary, clone, isNullOrUndefined, isShallowEqual, rotateArray, IDictionary, IDisposable, IUnique };
+import { isDeepEqual } from './helpers/isDeepEqual';
+export { Unique, Dictionary, clone, isDeepEqual, isNullOrUndefined, rotateArray, IDictionary, IDisposable, IUnique };
 // </autogen>
 export type ABC<T> = { name: string; prototype: T };
 export type Index<T> = { [key: string]: T };

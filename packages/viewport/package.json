@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/viewport",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,8 +15,6 @@
   },
   "author": "obi-wan-jacobi",
   "license": "",
-  "dependencies": {
-    "@plasmastrapi/geometry": "^1.0.21"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

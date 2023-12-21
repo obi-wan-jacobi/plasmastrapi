@@ -2,13 +2,14 @@ import { EDGE_TYPE } from '../enums/EDGE_TYPE';
 import IEdgesIntersection from '../interfaces/IEdgesIntersection';
 import IFindEdgesIntersectionOptions from '../interfaces/IFindEdgesIntersectionOptions';
 import { IPoint } from '../interfaces/IPoint';
-import { IPose } from '../interfaces/IPose';
-import { IShape } from '../interfaces/IShape';
 import Point from './Point';
 import * as geojson from 'geojson';
 import { Vector } from './Vector';
-import { lineIntersect } from '../turf';
+import { lineIntersect } from '../helpers/turf';
 import GeoJSON from './GeoJSON';
+import { IShape } from '../components/ShapeComponent';
+import { IPose } from '../components/PoseComponent';
+import { Epsilon } from '@plasmastrapi/math';
 
 export default abstract class Shape {
   public static transform(shape: IShape, pose: IPose): IShape {
@@ -63,7 +64,7 @@ export default abstract class Shape {
     start: IPoint,
     end: IPoint,
     edges: Edge[],
-    options: IFindEdgesIntersectionOptions = { epsilon: 0.000001, isIncludeStart: false, isIncludeEnd: false },
+    options: IFindEdgesIntersectionOptions = { epsilon: Epsilon.default, isIncludeStart: false, isIncludeEnd: false },
   ): IEdgesIntersection | undefined {
     const intersections = Shape.findAllEdgeIntersections(start, end, edges, options);
     return intersections.length ? intersections[0] : undefined;
@@ -73,9 +74,9 @@ export default abstract class Shape {
     start: IPoint,
     end: IPoint,
     edges: Edge[],
-    options: IFindEdgesIntersectionOptions = { epsilon: 0.000001, isIncludeStart: false, isIncludeEnd: false },
+    options: IFindEdgesIntersectionOptions = { epsilon: Epsilon.default, isIncludeStart: false, isIncludeEnd: false },
   ): IEdgesIntersection[] {
-    options = Object.assign({ epsilon: 0.000001, isIncludeStart: false, isIncludeEnd: false }, options);
+    options = Object.assign({ epsilon: Epsilon.default, isIncludeStart: false, isIncludeEnd: false }, options);
     return edges
       .map((edge, idx) => {
         let from = edge[0];
@@ -83,7 +84,10 @@ export default abstract class Shape {
         const u = Vector.normalizeFromPoints(from, to);
         from = { x: from.x - u.direction.x * options.epsilon!, y: from.y - u.direction.y * options.epsilon! };
         to = { x: to.x + u.direction.x * options.epsilon!, y: to.y + u.direction.y * options.epsilon! };
-        return [lineIntersect(GeoJSON.createFromPoints([start, end]), GeoJSON.createFromPoints([from, to])), idx];
+        const v = Vector.normalizeFromPoints(start, end);
+        const adjustedStart = { x: start.x - v.direction.x * options.epsilon!, y: start.y - v.direction.y * options.epsilon! };
+        const adjustedEnd = { x: end.x + v.direction.x * options.epsilon!, y: end.y + v.direction.y * options.epsilon! };
+        return [lineIntersect(GeoJSON.createFromPoints([adjustedStart, adjustedEnd]), GeoJSON.createFromPoints([from, to])), idx];
       })
       .filter(([intersection]) => {
         let isValidIntersection = intersection.features.length > 0;
@@ -117,7 +121,7 @@ export default abstract class Shape {
       }));
   }
 
-  public static findEdgeWithVertex(vertex: IPoint, edges: Edge[], epsilon = 0.000001): number {
+  public static findEdgeWithVertex(vertex: IPoint, edges: Edge[], epsilon = Epsilon.default): number {
     return edges.findIndex((edge) => {
       return (
         (Math.abs(vertex.x - edge[0].x) <= epsilon && Math.abs(vertex.y - edge[0].y) <= epsilon) ||
@@ -126,7 +130,7 @@ export default abstract class Shape {
     });
   }
 
-  public static findNextEdge(start: IPoint, edges: Edge[], epsilon = 0.000001): number {
+  public static findNextEdge(start: IPoint, edges: Edge[], epsilon = Epsilon.default): number {
     return edges.findIndex((edge) => {
       return Math.abs(start.x - edge[0].x) <= epsilon && Math.abs(start.y - edge[0].y) <= epsilon;
     });

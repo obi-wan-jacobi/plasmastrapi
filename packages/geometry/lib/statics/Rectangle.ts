@@ -1,4 +1,4 @@
-import { IShape } from '../interfaces/IShape';
+import { IShape } from '../components/ShapeComponent';
 
 export default abstract class Rectangle {
   public static create(width: number, height: number): IShape {

@@ -1,7 +1,7 @@
 import IEntity from '../interfaces/IEntity';
 
 // propagate method call to all children
-export default function hereditary({}: {}, {}: {}, descriptor: PropertyDescriptor): void {
+export default function Hereditary({}: {}, {}: {}, descriptor: PropertyDescriptor): void {
   const fn = descriptor.value;
   //https://stackoverflow.com/questions/5905492/dynamic-function-name-in-javascript
   descriptor.value = {

@@ -4,7 +4,7 @@
     "outDir": "./dist",
     "rootDir": "./lib",
     "declaration": true,
-    "types": ["lodash"]
+    "types": ["node", "lodash"]
   },
   "include": ["lib/**/*.ts"],
   "exclude": ["node_modules", "dist"]

@@ -1,5 +1,5 @@
-import { IPoint } from '@plasmastrapi/geometry';
 import { IImageCrop } from './IImageCrop';
+import IRenderingPoint from './IRenderingPoint';
 
 export interface IImage {
   src: string;
@@ -7,6 +7,6 @@ export interface IImage {
   height?: number;
   rotate?: number;
   crop?: IImageCrop;
-  offset?: IPoint;
+  offset?: IRenderingPoint;
   zIndex: number;
 }

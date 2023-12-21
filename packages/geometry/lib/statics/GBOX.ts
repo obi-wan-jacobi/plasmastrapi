@@ -1,10 +1,11 @@
+import { IShape } from '../components/ShapeComponent';
 import IGBOX from '../interfaces/IGBOX';
-import { IShape } from '../interfaces/IShape';
+import { Epsilon } from '@plasmastrapi/math';
 
 export default abstract class GBOX {
   private constructor() {}
 
-  public static create(shape: IShape, epsilon = 0.000001): IGBOX {
+  public static create(shape: IShape, epsilon = Epsilon.default): IGBOX {
     const vertices = shape.vertices;
     let minX = Number.POSITIVE_INFINITY;
     let minY = Number.POSITIVE_INFINITY;

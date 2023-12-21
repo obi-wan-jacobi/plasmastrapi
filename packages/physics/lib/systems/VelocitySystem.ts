@@ -1,5 +1,5 @@
-import { IComponentMaster, PoseComponent, System } from '@plasmastrapi/ecs';
-import { IPose } from '@plasmastrapi/geometry';
+import { IComponentMaster, System } from '@plasmastrapi/ecs';
+import { IPose, PoseComponent } from '@plasmastrapi/geometry';
 import VelocityComponent, { IVelocity } from '../components/VelocityComponent';
 
 export default class VelocitySystem extends System {

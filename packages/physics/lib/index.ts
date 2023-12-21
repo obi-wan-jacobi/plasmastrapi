@@ -7,8 +7,8 @@ import GravityComponent from './components/GravityComponent';
 import GravitySystem from './systems/GravitySystem';
 import ImpulseComponent, { IImpulse } from './components/ImpulseComponent';
 import ImpulseSystem from './systems/ImpulseSystem';
-import LevelComponent from './components/LevelComponent';
 import PhysicalComponent, { IPhysical } from './components/PhysicalComponent';
+import PoseSystem from './systems/PoseSystem';
 import RigidBodyComponent from './components/RigidBodyComponent';
 import VelocityComponent, { IVelocity } from './components/VelocityComponent';
 import VelocitySystem, { getNextPose } from './systems/VelocitySystem';
@@ -19,7 +19,6 @@ export {
   GravityComponent,
   ImpulseComponent,
   IImpulse,
-  LevelComponent,
   PhysicalComponent,
   IPhysical,
   RigidBodyComponent,
@@ -29,6 +28,7 @@ export {
   CollisionSystem,
   GravitySystem,
   ImpulseSystem,
+  PoseSystem,
   VelocitySystem,
   getNextPose,
 };

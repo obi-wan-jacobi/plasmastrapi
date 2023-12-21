@@ -1,5 +1,5 @@
 // trigger subscribed observer callbacks
-export function observable({}: {}, {}: {}, descriptor: PropertyDescriptor): void {
+export function Observable({}: {}, {}: {}, descriptor: PropertyDescriptor): void {
   const fn = descriptor.value;
   descriptor.value = {
     [fn.name]() {

@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/diagnostics",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,10 +16,8 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/ecs": "^1.0.21",
-    "@plasmastrapi/engine": "^1.0.23",
-    "@plasmastrapi/geometry": "^1.0.21",
-    "@plasmastrapi/viewport": "^1.0.3"
-  },
-  "devDependencies": {}
+    "@plasmastrapi/ecs": "^1.0.26",
+    "@plasmastrapi/geometry": "^1.0.27",
+    "@plasmastrapi/viewport": "^1.0.7"
+  }
 }

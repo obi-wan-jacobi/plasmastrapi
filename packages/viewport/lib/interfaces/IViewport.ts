@@ -1,18 +1,25 @@
-import { IPose, IPoint } from '@plasmastrapi/geometry';
 import { IImage } from './IImage';
 import { ILabel } from './ILabel';
+import IRenderingPoint from './IRenderingPoint';
+import IRenderingPose from './IRenderingPose';
 import { IStyle } from './IStyle';
 
-export default interface IViewport<TImageSource> {
+export default interface IViewport {
   width: number;
   height: number;
-  load(src: string, key?: string): TImageSource;
+  load<TImage, TImageSource extends { width: number; height: number }>(key: string, image?: TImage): TImageSource;
   render(): void;
-  drawImage({ pose, image }: { pose: IPose; image: IImage }): void;
-  drawLabel({ pose, style, label }: { pose: IPose; style: IStyle; label: ILabel }): void;
-  drawShape({ path, style }: { path: IPoint[]; style: IStyle }): void;
-  drawLine({ path, style }: { path: IPoint[]; style: IStyle }): void;
-  drawCircle({ position, radius, style }: { position: IPoint; radius: number; style: IStyle }): void;
-  drawPixel(payload: { position: IPoint; style: IStyle }): void;
-  drawPixelMap(payload: { cacheKey: string; position: IPoint; pixels: string[]; scalingFactor: number; isDirty: boolean }): void;
+  drawImage({ pose, image }: { pose: IRenderingPose; image: IImage }): void;
+  drawLabel({ pose, style, label }: { pose: IRenderingPose; style: IStyle; label: ILabel }): void;
+  drawShape({ path, style }: { path: IRenderingPoint[]; style: IStyle }): void;
+  drawLine({ path, style }: { path: IRenderingPoint[]; style: IStyle }): void;
+  drawCircle({ position, radius, style }: { position: IRenderingPoint; radius: number; style: IStyle }): void;
+  drawPixel({ position, style }: { position: IRenderingPoint; style: IStyle }): void;
+  drawPixelMap(payload: {
+    cacheKey: string;
+    position: IRenderingPoint;
+    pixels: string[];
+    scalingFactor: number;
+    isDirty: boolean;
+  }): void;
 }

@@ -3,23 +3,19 @@ import { Dictionary, IDictionary, Void, Volatile } from '@plasmastrapi/base';
 import IEntityMaster from '../interfaces/IEntityMaster';
 import IEntity from '../interfaces/IEntity';
 import { Etor } from '..';
-import { IOC } from './IOC';
 
 class EntityMaster implements IEntityMaster {
   private __entityMap: IDictionary<IDictionary<IEntity>> = new Dictionary();
   private __registerTargets: IEntity[] = [];
   private __purgeTargets: IEntity[] = [];
 
-  public constructor() {
-    IOC.entities = {
-      register: (instance: IEntity) => {
-        this.__registerTargets.push(instance);
-        return instance;
-      },
-      purge: (instance: IEntity) => {
-        this.__purgeTargets.push(instance);
-      },
-    };
+  public register(instance: IEntity) {
+    this.__registerTargets.push(instance);
+    return instance;
+  }
+
+  public purge(instance: IEntity) {
+    this.__purgeTargets.push(instance);
   }
 
   public count<T extends IEntity>(EntityClass: Etor<T>): number {

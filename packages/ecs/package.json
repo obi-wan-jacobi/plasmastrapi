@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/ecs",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,8 +16,8 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.29",
-    "@plasmastrapi/viewport": "^1.0.3",
+    "@plasmastrapi/base": "^1.0.34",
+    "@plasmastrapi/viewport": "^1.0.8",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

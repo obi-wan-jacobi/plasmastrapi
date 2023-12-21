@@ -1,7 +1,7 @@
 import * as geojson from 'geojson';
 import * as turf from '@turf/helpers';
 import { IPoint } from '../interfaces/IPoint';
-import { IShape } from '../interfaces/IShape';
+import { IShape } from '../components/ShapeComponent';
 
 export default abstract class GeoJSON {
   public static createFromPoints(points: IPoint[]): geojson.Feature<geojson.LineString, geojson.GeoJsonProperties> {

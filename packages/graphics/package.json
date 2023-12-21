@@ -1,0 +1,24 @@
+{
+  "name": "@plasmastrapi/graphics",
+  "version": "1.0.2",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "lint": "eslint --fix",
+    "prettier-format": "prettier --config ./../../.prettierrc --ignore-path ./../../.prettierignore .//**/*.{ts,js,jsx,json} --write --no-error-on-unmatched-pattern",
+    "build": "rimraf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "obi-wan-jacobi",
+  "license": "",
+  "dependencies": {
+    "@plasmastrapi/base": "^1.0.29",
+    "@plasmastrapi/ecs": "^1.0.21",
+    "@plasmastrapi/viewport": "^1.0.3"
+  },
+  "devDependencies": {}
+}

@@ -1,6 +1,6 @@
 {
   "name": "@plasmastrapi/html5-canvas",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,11 +16,10 @@
   "author": "obi-wan-jacobi",
   "license": "",
   "dependencies": {
-    "@plasmastrapi/base": "^1.0.29",
-    "@plasmastrapi/ecs": "^1.0.21",
-    "@plasmastrapi/engine": "^1.0.23",
-    "@plasmastrapi/geometry": "^1.0.21",
-    "@plasmastrapi/viewport": "^1.0.3"
-  },
-  "devDependencies": {}
+    "@plasmastrapi/base": "^1.0.34",
+    "@plasmastrapi/ecs": "^1.0.26",
+    "@plasmastrapi/geometry": "^1.0.27",
+    "@plasmastrapi/graphics": "^1.0.0",
+    "@plasmastrapi/viewport": "^1.0.8"
+  }
 }

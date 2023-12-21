@@ -1,9 +1,8 @@
 import { DeepPartial, Dictionary, IDictionary, Unique, Void, Volatile } from '@plasmastrapi/base';
-import { Ctor } from '..';
-import hereditary from '../decorators/hereditary';
+import { COMPONENTS, Ctor, ENTITIES } from '..';
+import Hereditary from '../decorators/Hereditary';
 import IComponent from '../interfaces/IComponent';
 import IEntity from '../interfaces/IEntity';
-import { IOC } from '../singletons/IOC';
 
 export default abstract class Entity extends Unique implements IEntity {
   private __components: IDictionary<IComponent<any>> = new Dictionary();
@@ -13,7 +12,7 @@ export default abstract class Entity extends Unique implements IEntity {
 
   public constructor() {
     super();
-    IOC.entities.register(this);
+    ENTITIES.register(this);
     this._children = new Dictionary();
   }
 
@@ -45,10 +44,10 @@ export default abstract class Entity extends Unique implements IEntity {
     return child;
   }
 
-  @hereditary
+  @Hereditary
   public $destroy(): void {
-    IOC.entities.purge(this);
-    this.$forEach((component) => IOC.components.purge(component));
+    ENTITIES.purge(this);
+    this.$forEach((component) => COMPONENTS.purge(component));
     this.$parent?.$removeChild(this);
   }
 
@@ -58,7 +57,7 @@ export default abstract class Entity extends Unique implements IEntity {
       const component = new ComponentClass({ data, entity: this });
       this.__components.write({
         key: ComponentClass.name,
-        value: IOC.components.register(component),
+        value: COMPONENTS.register(component),
       });
       return this;
     }
@@ -69,7 +68,7 @@ export default abstract class Entity extends Unique implements IEntity {
   public $remove<T extends IComponent<TArg>, TArg extends {}>(ComponentClass: Ctor<T, TArg>): void {
     const component = this.__throwIfMissingComponent(ComponentClass, this.$remove.name);
     this.__components.delete(ComponentClass.name);
-    IOC.components.purge(component);
+    COMPONENTS.purge(component);
   }
 
   public $has(ComponentClass: Ctor<IComponent<any>, any> | Ctor<IComponent<any>, any>[]): boolean {

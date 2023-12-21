@@ -1,4 +1,4 @@
 // <autogen>
-import { toNumber } from './math';
-export { toNumber };
+import Epsilon from './statics/Epsilon';
+export { Epsilon };
 // </autogen>

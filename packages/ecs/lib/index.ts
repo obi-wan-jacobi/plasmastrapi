@@ -1,49 +1,39 @@
 // <autogen>
 import Component from './abstracts/Component';
+import Engine from './Engine';
 import Entity from './abstracts/Entity';
+import Hereditary from './decorators/Hereditary';
 import IComponent from './interfaces/IComponent';
 import IComponentMaster from './interfaces/IComponentMaster';
+import IEngine from './interfaces/IEngine';
 import IEntity from './interfaces/IEntity';
 import IEntityMaster from './interfaces/IEntityMaster';
+import IRenderingSystem from './interfaces/IRenderingSystem';
 import ISystem from './interfaces/ISystem';
 import ISystemMaster from './interfaces/ISystemMaster';
-import ImageComponent from './components/ImageComponent';
-import LabelComponent from './components/LabelComponent';
-import LineComponent from './components/LineComponent';
-import PixelComponent from './components/PixelComponent';
-import PixelMapComponent from './components/PixelMapComponent';
-import PoseComponent from './components/PoseComponent';
-import ShapeComponent from './components/ShapeComponent';
-import StyleComponent from './components/StyleComponent';
+import RenderingSystem from './abstracts/RenderingSystem';
 import System from './abstracts/System';
-import hereditary from './decorators/hereditary';
 import { COMPONENTS } from './singletons/ComponentMaster';
 import { ENTITIES } from './singletons/EntityMaster';
-import { IOC } from './singletons/IOC';
 import { SYSTEMS } from './singletons/SystemMaster';
 export {
   Component,
   Entity,
+  RenderingSystem,
   System,
-  ImageComponent,
-  LabelComponent,
-  LineComponent,
-  PixelComponent,
-  PixelMapComponent,
-  PoseComponent,
-  ShapeComponent,
-  StyleComponent,
-  hereditary,
+  Hereditary,
   IComponent,
   IComponentMaster,
+  IEngine,
   IEntity,
   IEntityMaster,
+  IRenderingSystem,
   ISystem,
   ISystemMaster,
   COMPONENTS,
   ENTITIES,
-  IOC,
   SYSTEMS,
+  Engine,
 };
 // </autogen>
 import { ABC, Constructor } from '@plasmastrapi/base';

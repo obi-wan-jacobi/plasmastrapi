@@ -19,7 +19,7 @@ describe(GravitySystem.name, () => {
     expect(velocity).toEqual({ x: 0, y: 0, w: 0 });
     // run the system and check again
     const gravitySystem = new GravitySystem();
-    gravitySystem.once({ components: COMPONENTS, delta: 15 });
+    gravitySystem.once({ components: COMPONENTS, deltaTime: 15 });
     velocity = myEntity.$copy(VelocityComponent);
     expect(velocity).toEqual({ x: 7.5, y: -9, w: 0 });
   });
@@ -36,13 +36,13 @@ describe(GravitySystem.name, () => {
     // run the system and check again
     const accelerationSystem = new AccelerationSystem();
     const gravitySystem = new GravitySystem();
-    accelerationSystem.once({ components: COMPONENTS, delta: 15 });
-    gravitySystem.once({ components: COMPONENTS, delta: 15 });
+    accelerationSystem.once({ components: COMPONENTS, deltaTime: 15 });
+    gravitySystem.once({ components: COMPONENTS, deltaTime: 15 });
     velocity = myEntity.$copy(VelocityComponent);
     expect(velocity).toEqual({ x: 7.68, y: -9.195, w: 0, $: { previous: { x: 0, y: 0, w: 0 } } });
     // and again
-    accelerationSystem.once({ components: COMPONENTS, delta: 15 });
-    gravitySystem.once({ components: COMPONENTS, delta: 15 });
+    accelerationSystem.once({ components: COMPONENTS, deltaTime: 15 });
+    gravitySystem.once({ components: COMPONENTS, deltaTime: 15 });
     velocity = myEntity.$copy(VelocityComponent);
     expect(velocity).toEqual({ x: 15.36, y: -18.39, w: 0, $: { previous: { x: 7.68, y: -9.195, w: 0 } } });
   });

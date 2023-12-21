@@ -1,11 +1,12 @@
 import { Dictionary, IDictionary, Void } from '@plasmastrapi/base';
-import { Entity, PoseComponent, StyleComponent } from '@plasmastrapi/ecs';
+import { COLOUR } from '@plasmastrapi/viewport';
+import { PoseComponent } from '@plasmastrapi/geometry';
+import { StyleComponent } from '@plasmastrapi/graphics';
+import { Entity } from '@plasmastrapi/ecs';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
 import IHTML5CanvasElement from './interfaces/IHTML5CanvasElement';
 import IMouseEvent from './interfaces/IMouseEvent';
-import { COLOUR } from '@plasmastrapi/engine';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { observable } from './decorators/observable';
+import { Observable } from './decorators/Observable';
 
 export default class HTML5CanvasElement extends Entity implements IHTML5CanvasElement {
   protected _observedMethods: IDictionary<IDictionary<Void<any>>>;
@@ -50,37 +51,37 @@ export default class HTML5CanvasElement extends Entity implements IHTML5CanvasEl
     subscribers.delete(id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.MOUSE_DOWN](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.MOUSE_UP](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.CLICK](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.MOUSE_MOVE](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.MOUSE_ENTER](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   [MOUSE_EVENT.MOUSE_LEAVE](event: IMouseEvent): void {
     console.log(event.name, this.$id);
   }
 
-  @observable
+  @Observable
   public $destroy(): void {
     super.$destroy();
   }

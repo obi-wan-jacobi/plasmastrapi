@@ -2,6 +2,7 @@
 import HTML5CanvasElement from './HTML5CanvasElement';
 import HTML5CanvasViewport from './HTML5CanvasViewport';
 import HTML5ImageCache from './cache/HTML5ImageCache';
+import HTML5PixelCache from './cache/HTML5PixelCache';
 import IController from './interfaces/IController';
 import IEvent from './interfaces/IEvent';
 import IHTML5CanvasElement from './interfaces/IHTML5CanvasElement';
@@ -11,16 +12,15 @@ import IKeyboardEvent from './interfaces/IKeyboardEvent';
 import IMouseEvent from './interfaces/IMouseEvent';
 import InputController from './controllers/InputController';
 import InputHandler from './abstracts/InputHandler';
-import PixelCache from './cache/HTML5PixelCache';
 import { KEYBOARD_EVENT } from './enums/KEYBOARD_EVENT';
 import { MOUSE_EVENT } from './enums/MOUSE_EVENT';
-import { observable } from './decorators/observable';
+import { Observable } from './decorators/Observable';
 export {
   InputHandler,
   HTML5ImageCache,
-  PixelCache,
+  HTML5PixelCache,
   InputController,
-  observable,
+  Observable,
   KEYBOARD_EVENT,
   MOUSE_EVENT,
   IController,

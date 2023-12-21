@@ -9,6 +9,6 @@ export default interface ISystem {
     components: IComponentMaster;
     systems: ISystemMaster;
     deltaTime: number;
-    viewport: IViewport<any>;
+    viewport: IViewport;
   }): void;
 }

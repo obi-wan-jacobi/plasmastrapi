@@ -1,4 +1,4 @@
-import { IComponentMaster, IEntity, PoseComponent, System } from '@plasmastrapi/ecs';
+import { IComponentMaster, System } from '@plasmastrapi/ecs';
 import VelocityComponent from '../components/VelocityComponent';
 
 export default class CollisionSystem extends System {

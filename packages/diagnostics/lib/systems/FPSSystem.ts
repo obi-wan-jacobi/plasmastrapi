@@ -1,6 +1,6 @@
-import { IComponentMaster, ShapeComponent } from '@plasmastrapi/ecs';
-import { RenderingSystem, COLOUR } from '@plasmastrapi/engine';
-import { IViewport } from '@plasmastrapi/viewport';
+import { IComponentMaster, RenderingSystem } from '@plasmastrapi/ecs';
+import { COLOUR, IViewport } from '@plasmastrapi/viewport';
+import { ShapeComponent } from '@plasmastrapi/geometry';
 
 export default class FPSSystem extends RenderingSystem {
   private __printValue = '';
@@ -12,7 +12,7 @@ export default class FPSSystem extends RenderingSystem {
     components,
     deltaTime,
   }: {
-    viewport: IViewport<any>;
+    viewport: IViewport;
     components: IComponentMaster;
     deltaTime: number;
   }): void {

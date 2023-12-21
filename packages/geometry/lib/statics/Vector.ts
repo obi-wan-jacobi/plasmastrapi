@@ -2,6 +2,7 @@ import { INormalizedVector } from '../interfaces/INormalizedVector';
 import { IPoint } from '../interfaces/IPoint';
 import { IVector } from '../interfaces/IVector';
 import Point from './Point';
+import { Epsilon } from '@plasmastrapi/math';
 
 export abstract class Vector {
   public static normalizeFromPoints(p1: IPoint, p2: IPoint): INormalizedVector {
@@ -100,7 +101,7 @@ export abstract class Vector {
     return v1.x * v2.y - v1.y * v2.x;
   }
 
-  public static orientation(p: IPoint, q: IPoint, r: IPoint, epsilon = 0.000001): number {
+  public static orientation(p: IPoint, q: IPoint, r: IPoint, epsilon = Epsilon.default): number {
     const a = { x: q.x - p.x, y: q.y - p.y };
     const b = { x: r.x - p.x, y: r.y - p.y };
     const val = a.x * b.y - a.y * b.x;
