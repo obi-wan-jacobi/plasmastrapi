@@ -7,11 +7,8 @@ import StyleComponent from '../components/StyleComponent';
 export default class LabelSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport; components: IComponentMaster }): void {
     components.forEvery(LabelComponent)((label) => {
-      const style = label.$entity.$copy(StyleComponent);
       const pose = entityGetAbsolutePose(label.$entity as IEntity);
-      if (!style || !pose) {
-        return;
-      }
+      const style = label.$entity.$copy(StyleComponent);
       viewport.drawLabel({
         pose,
         style,

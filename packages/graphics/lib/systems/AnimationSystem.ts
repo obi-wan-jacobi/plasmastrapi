@@ -2,12 +2,14 @@ import { IComponentMaster, IEntity, RenderingSystem } from '@plasmastrapi/ecs';
 import AnimationComponent from '../components/AnimationComponent';
 import { IViewport } from '@plasmastrapi/viewport';
 import { entityGetAbsolutePose } from '@plasmastrapi/geometry';
+import StyleComponent from '../components/StyleComponent';
 
 export default class AnimationSystem extends RenderingSystem {
   public draw({ viewport, components }: { viewport: IViewport; components: IComponentMaster }): void {
     const now = Date.now();
     components.forEvery(AnimationComponent)((animationComponent) => {
       const pose = entityGetAbsolutePose(animationComponent.$entity as IEntity);
+      const style = animationComponent.$entity.$copy(StyleComponent);
       const animation = animationComponent.copy();
       if (animation.$ === undefined) {
         animation.$ = { tNextFrame: now + animation.durationMs };
@@ -40,6 +42,7 @@ export default class AnimationSystem extends RenderingSystem {
       viewport.drawImage({
         pose,
         image: animation.images[animation.frame],
+        style,
       });
     });
   }

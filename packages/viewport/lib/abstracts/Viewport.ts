@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Void } from '@plasmastrapi/base';
 import ICache from '../interfaces/ICache';
 import IRenderingContext from '../interfaces/IRenderingContext';
@@ -54,43 +55,35 @@ export default abstract class Viewport<
     this._zBuffer = [];
   }
 
-  public drawImage(payload: { pose: IRenderingPose; image: IImage }): void {
-    this._zBuffer.push({
-      method: this.__drawImage,
-      payload,
-      zIndex: payload.image.zIndex,
-    });
-  }
+  @ZBuffered
+  public drawImage(payload: { pose: IRenderingPose; image: IImage; style: IStyle }): void {}
 
-  public drawShape(payload: { path: IRenderingPoint[]; style: IStyle }): void {
-    this._zBuffer.push({
-      method: this.__drawShape,
-      payload,
-      zIndex: payload.style.zIndex,
-    });
-  }
+  @ZBuffered
+  public drawShape(payload: { path: IRenderingPoint[]; style: IStyle }): void {}
 
-  public drawLine(payload: { path: IRenderingPoint[]; style: IStyle }): void {
-    this._zBuffer.push({
-      method: this.__drawLine,
-      payload,
-      zIndex: payload.style.zIndex,
-    });
-  }
+  @ZBuffered
+  public drawLine(payload: { path: IRenderingPoint[]; style: IStyle }): void {}
 
-  public drawLabel(payload: { pose: IRenderingPose; style: IStyle; label: ILabel }): void {
-    this._zBuffer.push({
-      method: this.__drawLabel,
-      payload,
-      zIndex: payload.style.zIndex,
-    });
-  }
+  @ZBuffered
+  public drawLabel(payload: { pose: IRenderingPose; label: ILabel; style: IStyle }): void {}
 
-  public drawCircle(payload: { position: IRenderingPoint; radius: number; style: IStyle }): void {
+  @ZBuffered
+  public drawCircle(payload: { position: IRenderingPoint; radius: number; style: IStyle }): void {}
+
+  @ZBuffered
+  public drawPixel(payload: { position: IRenderingPoint; style: IStyle }): void {}
+
+  public drawPixelMap(payload: {
+    cacheKey: string;
+    position: IRenderingPoint;
+    pixels: string[];
+    scalingFactor: number;
+    isDirty: boolean;
+  }): void {
     this._zBuffer.push({
-      method: this.__drawCircle,
+      method: this.__drawPixelMap,
       payload,
-      zIndex: payload.style.zIndex,
+      zIndex: 9999,
     });
   }
 
@@ -112,28 +105,6 @@ export default abstract class Viewport<
       /* dw:    */ image.width || (asset.width as number),
       /* dh:    */ image.height || (asset.height as number),
     );
-  }
-
-  public drawPixel(payload: { position: IRenderingPoint; style: IStyle }): void {
-    this._zBuffer.push({
-      method: this.__drawPixel,
-      payload,
-      zIndex: payload.style.zIndex,
-    });
-  }
-
-  public drawPixelMap(payload: {
-    cacheKey: string;
-    position: IRenderingPoint;
-    pixels: string[];
-    scalingFactor: number;
-    isDirty: boolean;
-  }): void {
-    this._zBuffer.push({
-      method: this.__drawPixelMap,
-      payload,
-      zIndex: 9999,
-    });
   }
 
   @Atomic
@@ -161,7 +132,7 @@ export default abstract class Viewport<
   }
 
   @Atomic
-  private __drawLabel({ pose, style, label }: { pose: IRenderingPose; style: IStyle; label: ILabel }): void {
+  private __drawLabel({ pose, label, style }: { pose: IRenderingPose; style: IStyle; label: ILabel }): void {
     this._ctx.fillStyle = style.colour;
     this._ctx.font = `${label.fontSize}px Arial`;
     this._ctx.fillText(label.text, pose.x + label.offset.x, pose.y + label.offset.y);
@@ -243,4 +214,16 @@ export default abstract class Viewport<
       /* dh:    */ dimension,
     );
   }
+}
+
+function ZBuffered({}, {}, descriptor: PropertyDescriptor): void {
+  const fnName = descriptor.value.name;
+  descriptor.value = function (): void {
+    const payload = arguments[0];
+    this._zBuffer.push({
+      method: this[`__${fnName}`],
+      payload,
+      zIndex: payload.style.zIndex,
+    });
+  };
 }
